@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no">
+<title>Document</title>
+<link rel="stylesheet" href="./css/index.css">
+<script type="text/javascript">
+(function(){
+	function fn(){
+		var html = document.documentElement;
+		html.style.fontSize = html.clientWidth/16 + "px";
+	}
+	fn();
+	window.addEventListener('onorientationchange' in window ? 'orientationchange' : "resize", fn);	
+})();
+</script>
+</head>
+<body>
+    <header id="header">
+        <i>QQ音乐</i>
+        <a href="javascript:;">下载APP</a>
+    </header>
+    <nav id="nav">
+    	<a href="javascript:;">推荐<span class="page"></span></a>
+    	<a href="javascript:;">排行榜<span class="page"></span></a>
+    	<a href="javascript:;">搜索<span class="page"></span></a>
+    </nav>
+    <section id="section">
+	    <section id="box1">
+		    <div id="carousel">
+			    <ul id="list">
+			        <li><img src="./img/5.jpg" ></li>
+			        <li><img src="./img/1.jpg" ></li>
+			        <li><img src="./img/2.jpg" ></li>
+			        <li><img src="./img/3.jpg" ></li>
+			        <li><img src="./img/4.jpg" ></li>
+			        <li><img src="./img/5.jpg" ></li>
+			        <li><img src="./img/1.jpg" ></li>
+			    </ul>
+			    <p>
+			    	<span></span>
+			        <span></span>
+			        <span></span>
+			        <span></span>
+			        <span></span>
+			    </p>
+		    </div>
+		    <div id="hot">
+		    	<h2>热门歌单</h2>
+		    	<ul class="hotCenter">
+		    		
+		    	</ul>
+		    	<p class="pullDown">下拉加载更多</p>
+		    </div>
+	    </section>
+	    <section id="box2">
+	    	
+	    </section>
+	    <section id="box3">
+	    	<div id="box3Em">
+		    	<input type="text" id="seek" placeholder="搜索歌曲、歌单、专辑">
+		    	<em id="em">X</em>
+		    	<input type="button" id="btn" value="搜索">
+	    	</div>
+	    	<h5 id="h5">热门搜索</h5>
+	    	<div id="hunt">
+	    		<span class="spanSp">丑八怪</span>
+	    		<span class="spanSp">DJ Got Us Fallin In Love</span>
+	    		<span class="spanSp">以父之名</span>
+	    		<span class="spanSp">千年之恋</span>
+	    		<span class="spanSp">江南</span>
+	    		<span class="spanSp">夜空中最亮的星</span>
+	    		<span class="spanSp">十年</span>
+	    		<span class="spanSp">逆战</span>
+	    	</div>
+	    	<ul id="huntList">
+	    		
+	    	</ul>
+	    </section>
+	    <section id="box4">
+	    	
+	    </section>
+    </section>
+	<script src="./js/tools.js"></script>
+	<script src="./js/MTween.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

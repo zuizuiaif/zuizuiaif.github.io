@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>模仿商场首页推广</title>
+<style>
+	body{
+		margin: 0;
+		font-size: 12px;
+	}
+	.clearFix:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+	#box{
+		width: 960px;
+		height: 332px;
+		padding: 9px 7px 4px 5px;
+		background: #e7e7e7;
+	}
+	#navs{
+		width: 123px;
+		float: left;
+	}
+	#navs a{
+		display: block;
+		height: 80px;
+		border: 1px solid #c6c6c6;
+		border-right: none;
+	}
+	#navs a:nth-of-type(1){
+		background: #fff url(img/4.png) no-repeat center 10px;
+	}
+	#navs a:nth-of-type(2){
+		background: url(img/5.png) no-repeat center 10px;
+	}
+	#navs a:nth-of-type(3){
+		background: url(img/6.png) no-repeat center 10px;
+	}
+	#navs a:nth-of-type(4){
+		background: url(img/7.png) no-repeat center 10px;
+	}
+	#content{
+		position: relative;
+		float: left;
+		height: 326px;
+		width: 810px;
+		border: 1px solid #c6c6c6;
+		border-left: none;
+	}
+	#content img{
+		display: none;
+	}
+	#content span{
+		color: #fff;
+		line-height: 26px;
+		text-align: center;
+	}
+	#box2,
+	#box3,
+	#box4{
+		display: none;
+	}
+	#box1 span:nth-of-type(1){
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 269px;
+		height: 26px;
+		background: #ef3163;
+	}
+	#box1 span:nth-of-type(2){
+		position: absolute;
+		bottom: 0;
+		left: 270px;
+		width: 269px;
+		height: 26px;
+		background: #5a5a52;
+	}
+	#box1 span:nth-of-type(3){
+		position: absolute;
+		bottom: 0;
+		left: 540px;
+		width: 270px;
+		height: 26px;
+		background: #5a5a52;
+	}
+	#box2 span:nth-of-type(1){
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 201px;
+		height: 26px;
+		background: #ef3163;
+	}
+	#box2 span:nth-of-type(2){
+		position: absolute;
+		bottom: 0;
+		left: 202px;
+		width: 201px;
+		height: 26px;
+		background: #5a5a52;
+	}
+	#box2 span:nth-of-type(3){
+		position: absolute;
+		bottom: 0;
+		left: 404px;
+		width: 201px;
+		height: 26px;
+		background: #5a5a52;
+	}
+	#box2 span:nth-of-type(4){
+		position: absolute;
+		bottom: 0;
+		left: 606px;
+		width: 201px;
+		height: 26px;
+		background: #5a5a52;
+	}
+	#box3 span:nth-of-type(1){
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 161px;
+		height: 26px;
+		background: #ef3163;
+	}
+	#box3 span:nth-of-type(2){
+		position: absolute;
+		bottom: 0;
+		left: 162px;
+		width: 161px;
+		height: 26px;
+		background: #5a5a52;
+	}
+	#box3 span:nth-of-type(3){
+		position: absolute;
+		bottom: 0;
+		left: 324px;
+		width: 161px;
+		height: 26px;
+		background: #5a5a52;
+	}
+	#box3 span:nth-of-type(4){
+		position: absolute;
+		bottom: 0;
+		left: 486px;
+		width: 161px;
+		height: 26px;
+		background: #5a5a52;
+	}
+	#box3 span:nth-of-type(5){
+		position: absolute;
+		bottom: 0;
+		left: 648px;
+		width: 161px;
+		height: 26px;
+		background: #5a5a52;
+	}
+
+	#box4 span:nth-of-type(1){
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 201px;
+		height: 26px;
+		background: #ef3163;
+	}
+	#box4 span:nth-of-type(2){
+		position: absolute;
+		bottom: 0;
+		left: 202px;
+		width: 201px;
+		height: 26px;
+		background: #5a5a52;
+	}
+	#box4 span:nth-of-type(3){
+		position: absolute;
+		bottom: 0;
+		left: 404px;
+		width: 201px;
+		height: 26px;
+		background: #5a5a52;
+	}
+	#box4 span:nth-of-type(4){
+		position: absolute;
+		bottom: 0;
+		left: 606px;
+		width: 201px;
+		height: 26px;
+		background: #5a5a52;
+	}
+</style>
+</head>
+<body>
+<section id="box" class="clearFix">
+	<nav id="navs">
+		<a href="javascript:;"></a>
+		<a href="javascript:;"></a>
+		<a href="javascript:;"></a>
+		<a href="javascript:;"></a>
+	</nav>
+	<div id="content">
+		<div id="box1">
+			<img src="img/8.png" style="display: block;">
+			<img src="img/9.png">
+			<img src="img/10.png">
+			<span>雅诗兰黛完美修复唇膏（蓝色花纹管管体）3.6克</span>
+			<span>雅诗兰黛花漾唇膏01.3.8克</span>
+			<span>青碧卓越润肤乳125ml</span>
+		</div>
+		<div id="box2">
+			<img src="img/11.png" style="display: block;">
+			<img src="img/12.png">
+			<img src="img/13.png">
+			<img src="img/14.png">
+			<span>肌研满100减50</span>
+			<span>高性价比低单价商品2.8折</span>
+			<span>贝德玛满228减128</span>
+			<span>吃出健康美态2.8折起</span>
+		</div>
+		<div id="box3">
+			<img src="img/15.png" style="display: block;">
+			<img src="img/16.png">
+			<img src="img/17.png">
+			<img src="img/18.png">
+			<img src="img/19.png">
+			<span>艾格利克全场1.5折起</span>
+			<span>NO1dora全场1.4折起</span>
+			<span>伊米妮全场1折起</span>
+			<span>小熊电器全场1折起</span>
+			<span>贝蒂卡全场1折起</span>
+		</div>
+		<div id="box4">
+			<img src="img/20.png" style="display: block;">
+			<img src="img/21.png">
+			<img src="img/22.png">
+			<img src="img/23.png">
+			<span>万达大歌星2小时欢唱卷</span>
+			<span>Free派-高丝娜冠眼眶</span>
+			<span>财付通下单立减 还抽反单</span>
+			<span>Free派-芙优融天蚕丝面膜</span>
+		</div>
+	</div>
+</section>
+<script>
+	var navs = document.getElementById("navs");
+	var label = navs.getElementsByTagName("a");
+	var content = document.getElementById("content")
+	var divs = content.getElementsByTagName("div");
+	for (var i = 0; i < label.length; i++) {
+		label[i].index = i;
+		label[i].onmouseover = function(){
+			for (var o = 0; o < divs.length; o++) {
+				label[o].style.backgroundColor = "#e7e7e7";
+				divs[o].style.display = "none";
+			}
+			divs[this.index].style.display = "block";
+			label[this.index].style.backgroundColor = "#fff";
+		}
+	}
+	function tab(obj){
+		var imgs = obj.getElementsByTagName("img");
+		var spans = obj.getElementsByTagName("span");
+		for (var i = 0; i < spans.length; i++) {
+			spans[i].xb = i;
+			spans[i].onmouseover = function(){
+				for (var o = 0; o < imgs.length; o++) {
+					imgs[o].style.display = "none";
+					spans[o].style.background = "#5a5a52"
+				}
+				imgs[this.xb].style.display = "block";
+				this.style.background = "#ef3163";
+			}
+		}
+	}
+	for (var i = 0; i < divs.length; i++) {
+		tab(divs[i]);
+	}
+</script>
+</body>
+</html>

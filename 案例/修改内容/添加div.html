@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>添加div</title>
+<style>
+	#box{
+		width: 800px;
+		height: 800px;
+		border: 1px solid #000;
+	}
+	#box div{
+		background: red;
+		float: left;
+		margin-right: 20px;
+	}
+</style>
+</head>
+<body>
+	<input type="text" placeholder="请输入宽" id="text1">
+	<input type="text" placeholder="请输入高" id="text2">
+	<input type="button" value="确定添加" id="btn">
+	<div id="box">
+		
+	</div>
+<script>
+	var text1 = document.getElementById("text1");
+	var text2 = document.getElementById("text2");
+	var btn = document.getElementById("btn");
+	var box = document.getElementById("box");
+	//点击btn时
+	btn.onclick = function(){
+		//获取text的value值
+		var W = text1.value;
+		var H = text2.value;
+		//修改box的值
+		box.innerHTML = box.innerHTML + '<div style="width: '+W+'px;height: '+H+'px;"></div>'
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>模拟qq聊天</title>
+<style>
+	body{
+		margin: 0;
+	}
+	ul{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		list-style: none;
+	}
+	img{
+		vertical-align: top;
+	}
+	input{
+		padding: 0;
+		outline: none;
+	}
+	#box{
+		position: relative;
+		width: 237px;
+		height: 419px;
+		padding: 87px 26px 88px 26px;
+		background: url(img/1.png) no-repeat;
+	}
+	#box1{
+		position: absolute;
+		left: 26px;
+		bottom: 90px;
+		width: 237px;
+		height: 47px;
+		border-top: 1px solid #bdcec6;
+	}
+	#list{
+		overflow: auto;
+		height: 370px;
+	}
+	#list li {
+		overflow: hidden;
+	}
+	#listL{
+		line-height: 36px;
+		width: 100%;
+		margin-top: 3px;
+	}
+	#listL img{
+		float: left;
+	}
+	#listL p{
+		float:left;
+		background:#ccc;
+		max-width: 140px;
+		word-break: break-all;
+	}
+	#listR{
+		width: 100%;
+		margin-top: 3px;
+	}
+	#listR img{
+		float: right;
+	}
+	#listR p{
+		float:right;
+		background:green;
+		max-width: 140px;
+		word-break: break-all;
+	}
+	#imgs{
+		margin: 7px 0 0 5px;
+	}
+	#text{
+		margin-top: 5px;
+		height: 34px;
+		width: 135px;
+		border-radius: 10px;
+	}
+	#btn{
+		border: none;
+		background: #fff;
+		font-size: 20px;
+	}
+</style>
+</head>
+<body>
+<section id="box">
+	<ul id="list">
+		<!-- <li id="listL">
+			<img src="img/2.png">
+			<p>aaaaaaaa</p>
+		</li>
+		<li id="listR"></li> -->
+	</ul>
+	<div id="box1">
+		<img src="img/2.png" id="imgs">
+		<input type="text" id="text">
+		<input type="button" id="btn" value="发送">
+	</div>
+</section>
+<script>
+	var list = document.getElementById("list");
+	var imgs = document.getElementById("imgs");
+	var text = document.getElementById("text");
+	var btn = document.getElementById("btn");
+	var onOff = true;
+	//点击imgs的时候更换图片
+	imgs.onclick = function(){
+		//如果
+		if(onOff){
+			imgs.src = "img/3.png";
+			onOff = false;
+		//否则
+		}else{
+			imgs.src = "img/2.png"
+			onOff = true;
+		}
+	}
+	//btn点击的时候发送
+	btn.onclick =function(){
+		//如果
+		var textInput = text.value;
+		if( textInput == "" ){
+			alert("请输入");
+		}else{
+			if(onOff){
+				var num = 2;
+				var idName = "listL";
+				//list内容
+				//list.innerHTML = list.innerHTML+'<img src="img/2.png" style="float:left">' + '<li style="float:left;background:#ccc;">'+textInput+'</li>'+"<br>";
+			//否则
+			}else{
+				var num = 3;
+				var idName = "listR";
+				//list内容
+				//list.innerHTML = list.innerHTML+'<img src="img/3.png" style="float:right">' + '<li style="float:right;background:green">'+textInput+'</li>'+"<br>";
+			}
+			list.innerHTML = list.innerHTML+'<li id='+idName+'><img src="img/'+num+'.png"><p>'+textInput+'</p></li>'
+			text.value = "";
+		}
+	}	
+</script>
+</body>
+</html>

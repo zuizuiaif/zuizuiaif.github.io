@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>修改内容</title>
+<style>
+	body{
+		margin: 0;
+		background: #efefe7;
+		font-size: 20px;
+		position: relative;
+	}
+	#box{
+		width: 500px;
+		height: 400px;
+		background: #fff;
+		position: absolute;
+		top: 60px;
+		left: 50px;
+	}
+	#btn{
+		width: 80px;
+		height: 40px;
+		color: #fff;
+		background: #94948c;
+		position: absolute;
+		top: 50px;
+		left: 570px;
+		font-size: 20px;
+	}
+	#btn1{
+		width: 80px;
+		height: 40px;
+		color: #000;
+		background: #ccc;
+		position: absolute;
+		top: 90px;
+		left: 570px;
+		font-size: 20px;
+		display: none;
+	}
+	#btn1:hover{
+		background: #e76308;
+		color: #fff;
+	}
+	#btn2{
+		width: 80px;
+		height: 40px;
+		color: #000;
+		background: #ccc;
+		position: absolute;
+		top: 130px;
+		left: 570px;
+		font-size: 20px;
+		display: none;
+	}
+	#btn2:hover{
+		background: #e76308;
+		color: #fff;
+	}
+	#box1{
+		width: 500px;
+		height: 150px;
+		border: 10px solid #e71063;
+		background: #e7e7b5;
+		position: absolute;
+		top: 480px;
+		left: 40px;
+		display: none;
+	}
+	.btn1{
+		position: absolute;
+		top: 20px;
+		left: 30px;
+		width: 80px;
+		height: 30px;
+	}
+	.btn2{
+		position: absolute;
+		top: 20px;
+		left: 110px;
+		width: 80px;
+		height: 30px;
+	}
+	#div1,
+	#div2{
+		position: absolute;
+		top: 80px;
+		left: 30px;
+		display: none;
+	}
+	.text{
+		width: 180px;
+		height: 24px;
+		background: #fff;
+	}
+	#xx{
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		color: #000;
+		text-decoration: none;
+		font-size: 20px;
+	}
+	span{
+		background: yellow;
+	}
+	strong{
+		background: red;
+	}
+</style>
+</head>
+<body>
+	<section id="box">
+		1.允许使用数字，字母，下划线 美元符组合而成<br>
+		2.不能以数字开头<br>
+		3.不允许使用关键字和保留字<br>
+		4.变量名语义化
+			关键字：当前语法中正在使用的单词
+			保留字：将来可能在语法中使用的单词<br>
+		5.命名风格
+			小驼峰 var firstElementBtn
+			当几个单词组合命名，从第二个单词开始，首字母大写
+			大驼峰 var FirstElementBtn
+			当几个单词组合命名，所有单词首字母大写
+	</section>
+	<input type="button" id="btn" value="展开">
+	<input type="button" id="btn1" value="查找">
+	<input type="button" id="btn2" value="修改">
+	<section id="box1">
+		<input type="button" class="btn1" value="查找">
+		<input type="button" class="btn2" value="修改">
+		<a href="javascript:;" id="xx">X</a>
+		<div id="div1">
+			<input type="text" class="text">
+			<input type="button" class="btn3" value="查找">
+		</div>
+		<div id="div2">
+			<input type="text" class="text">
+			<input type="text" class="text">
+			<input type="button" class="btn3" value="修改">
+		</div>
+	</section>
+</body>
+<script src="tools.js"></script>
+<script>
+	var box = $("#box");
+	var btn = $("#btn");
+	var btn1 = $("#btn1");
+	var btn2 = $("#btn2");
+	var box1 = $("#box1");
+	var box1Text1 = $(".btn1")[0];
+	var box1Text2 = $(".btn2")[0];
+	var xx = $("#xx");
+	var div1 = $("#div1");
+	var div2 = $("#div2");
+	var text = $(".text");
+	var btn3 = $(".btn3");
+	var onOff = true;
+	var boxHTML = box.innerHTML;
+	btn.onclick = function(){
+		if(btn1.style.display === "none"){
+			onOff = true;
+		}
+		var dp = onOff ? "block" : "none";
+		btn1.style.display = dp;
+		btn2.style.display = dp;
+		onOff = !onOff;
+	}
+	function fun(b1,b2,d1,d2){
+		b1.style.cssText = "background:#e76308;color:#fff;"
+		b2.style.cssText = "";
+		d1.style.display = "block";
+		d2.style.display = "none";
+	}
+	function fun1(){
+		btn1.style.display = "none";
+		btn2.style.display = "none";
+		box1.style.display = "block"
+	}
+	function fun2(){
+		text[0].value = "";
+		text[1].value = "";
+		text[2].value = "";
+	}
+	function cf(){
+		fun(box1Text1,box1Text2,div1,div2);
+	}
+	function vf(){
+		fun(box1Text2,box1Text1,div2,div1)
+	}
+	btn1.onclick = function(){
+		cf();
+		fun1();
+	}
+	btn2.onclick = function(){
+		vf();
+		fun1();
+	}
+	boHTml = "";
+	box1Text1.onclick = function(){
+		box.innerHTML = boHTml;
+		fun2();
+		cf();
+	}
+	box1Text2.onclick = function(){
+		box.innerHTML = boxHTML;
+		fun2();
+		vf();
+	}
+	xx.onclick = function(){
+		box1.style.display = "none";
+	}
+	btn3[0].onclick = function(){
+		box.innerHTML = boxHTML;
+		var val = text[0].value;
+		text[0].value = "";
+		var arr = box.innerHTML.split(val);
+		var str = arr.join('<span>'+val+'</span>');
+		if(val == "" || val == " "){
+			alert("请输入内容");
+		}else if(arr.length < 2){
+			alert("内容没找到");
+		}else{
+			box.innerHTML = str;
+		}
+	}
+	btn3[1].onclick = function(){
+		if(text[1].value == ""){
+			alert("请输入内容");
+		}else{
+			box.innerHTML = boxHTML;
+			var val1 = text[1].value;
+			var val2 = text[2].value;
+			text[1].value = "";
+			text[2].value = "";
+			var arr = box.innerHTML.split(val1);
+			var str = arr.join('<strong>'+val2+'</strong>');
+			var abc = arr.join(val2)
+			box.innerHTML = str;
+			if(arr.length < 2){
+				alert("内容没找到");
+			}else{
+				boxHTML = box.innerHTML;
+				boHTml = arr.join(val2);
+			}
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>方块移动</title>
+<style>
+	div{
+		width: 50px;
+		height: 50px;
+		background: red;
+		margin: 5px;
+		float: left;
+		position: relative;
+		top: 0;
+	}
+</style>
+</head>
+<body>
+<section id="box">
+</section>
+</body>
+<script src="tools.js"></script>
+<script src="MTween.js"></script>
+<script>
+	var box = $("#box")
+	var divs = $("div",box)
+	for (var i = 0; i < 20; i++) {
+		box.innerHTML += "<div></div>"
+	}
+	var onOff = true;
+	var timer;
+	document.onclick = function(){
+		if(timer ){
+            return;
+        }
+		for (var i = 0; i < divs.length; i++){
+			fn(i)
+		}
+		function fn(n){
+			var target = onOff ? 500 : 0;
+			timer = setTimeout(function (){
+				MTween(divs[n],"top",1000,target,"linear",function(){
+					if(n === divs.length - 1){
+						timer = null;
+					}
+				})
+			},n*100);
+		}
+		onOff = !onOff;
+	}
+</script>
+</html>

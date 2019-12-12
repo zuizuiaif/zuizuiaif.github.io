@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+	body{
+		margin: 0;
+		font: 12px "微软雅黑";
+		background: #e0f2ff url(img/bj.png) no-repeat 0 70%;
+		background-size: 100%;
+		height: 100px;
+	}
+	p{
+		margin: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	#section{
+		position: fixed;
+		top: 45%;
+		left: 65%;
+		perspective: 2000px;
+		
+	}
+	#login{
+		width: 450px;
+		height: 340px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin-top: -170px;
+		background: #fff;
+		transition: 2s;
+		z-index: 2;
+	}
+	.enter{
+		font-size: 20px;
+		line-height: 50px;
+		text-align: center;
+		color: #000;
+	}
+	.warn{
+		text-align: center;
+		color: #000;
+		line-height: 30px;
+		font-size: 14px;
+	}
+	.mark{
+		width: 270px;
+		height: 40px;
+		margin: 20px 0 0 80px;
+		font-size: 14px;
+		padding-left: 10px;
+		display: block;
+	}
+	.btn{
+		width: 290px;
+		height: 40px;
+		margin: 20px 0 0 70px;
+		font-size: 18px;
+		background: #86ce2f;
+		color: #fff;
+	}
+	.btnd{
+		text-align: center;
+		display: block;
+		line-height: 40px;
+		width: 300px;
+		margin-left: 73px;
+	}
+	.options{
+		padding: 20px 0 0 20px;
+	}
+	.dealSelect{
+		float: left;
+		width: 15px;
+		height: 15px;
+		border: 1px solid #3b97f5;
+		background: url(./img/1.jpg);
+	}
+	.deal{
+		float: left;
+		margin-left: 5px;
+		color: #000;
+		font-size: 12px;
+	}
+	.deal:hover{
+		text-decoration: underline;
+	}
+	.forgot{
+		float: left;
+		margin-left: 10px;
+		color: #000;
+	}
+	.forgot:hover{
+		text-decoration: underline;
+	}
+	.enroll{
+		float: left;
+		margin-left: 10px;
+		color: #000;
+	}
+	.enroll:hover{
+		text-decoration: underline;
+	}
+	.idea{
+		float: left;
+		margin-left: 10px;
+		color: #000;
+	}
+	.idea:hover{
+		text-decoration: underline;
+	}
+	.wire{
+		float: left;
+		width: 1px;
+		height: 14px;
+		background: #ccc;
+		margin: 2px 0 0 10px;
+	}
+	.content1{
+		display: none;
+		font-size: 14px;
+		line-height: 192px;
+		text-align: center;
+	}
+	.content2{
+		display: none;
+		height: 172px;
+	}
+	#register{
+		width: 450px;
+		height: 340px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin-top: -170px;
+		background: #fff;
+		transition: 2s;
+		z-index: 1;
+		transform : rotateY(180deg);
+	}
+	#register div{
+		height: 50px;
+		font-size: 14px;
+		padding-left: 10px;
+	}
+	#register div input{
+		width: 240px;
+		height: 40px;
+		margin: 20px 0 0 25px;
+		font-size: 14px;
+		padding-left: 10px;
+	}
+	#register .name{
+		margin: 20px 0 0 19px;
+	}
+	#register .thicks{
+		margin: 20px 0 0 5px;
+	}
+	#register div span{
+		padding-left: 15px;
+		background: url(./img/no.png) no-repeat 0 5px;
+		color: red;
+		display: none;
+	}
+	.btnc{
+		margin-top: 25px;
+		width: 140px;
+	}
+	.btnfh{
+		margin-top: 25px;
+		width: 140px;
+		margin-left: 10px;
+	}
+</style>
+</head>
+<body>
+	<section id="section">
+		<div id="login">
+			<p class="enter">账号密码登录</p>
+			<p class="warn">推荐使用快速安全登录，防止盗号。</p>
+			<div class="content">
+				<input type="text" class="mark markd empty" placeholder="用户名登录">
+				<input type="password" class="mark markdm empty" placeholder="密码">
+				<a href="javascript:;" class="btn btnd">登录</a>
+			</div>
+			<div class="content1">
+				需要同意微云服务协议才能登录
+			</div>
+			<div class="content2">
+				<input type="text" class="mark markz empty" placeholder="用户名找回">
+				<input type="button" value="找回" class="btn btnz">
+				<input type="button" value="返回登陆" class="btn btnf">
+			</div>
+			<div class="options">
+				<span class="dealSelect"></span>
+				<a href="http://www.weiyun.com/xy.html" class="deal">阅读并接受《微云服务协议》</a>
+				<a href="#" class="forgot">忘了密码？</a><span class="wire"></span>
+				<a href="#" class="enroll">注册新账号</a><span class="wire"></span>
+				<a href="http://support.qq.com/write.shtml?guest=1&fid=713&SSTAG=hailunna" class="idea">意见反馈</a>
+			</div>
+		</div>
+		<div id="register">
+			<p class="enter">新用户注册</p>
+			<div>
+				用户名：<input type="text" placeholder="字母数字组合，开头不能数字" class="name empty">
+				<span>用户名存在</span><span>格式错误</span>
+			</div>
+			<div>
+				密&nbsp;&nbsp;码：<input type="password" placeholder="字母数字符号组合，10-16位" class="thick empty">
+				<span>密码长度错误</span>
+			</div>
+			<div>
+				确定密码：<input type="password" placeholder="和原密码一致" class="thicks empty">
+				<span>密码不同</span>
+			</div>
+			<div>
+				邮&nbsp;&nbsp;箱：<input type="text" placeholder="绑定邮箱" class="post empty">
+				<span>不正确邮箱</span>
+			</div>
+			<input type="button" class="btn btnc" value="注册">
+			<input type="button" class="btn btnfh" value="返回登陆">
+		</div>
+	</section>
+
+<script src="./js/public/tools.js"></script>
+<script>
+	//缓存
+	var storage = window.localStorage;
+	//登录页面
+	var register = tools.$("#register")
+	var dealSelect = tools.$('.dealSelect')[0]
+	var content = tools.$('.content')[0]
+	var content1 = tools.$('.content1')[0]
+	var content2 = tools.$('.content2')[0]
+	var onOff = true;
+	dealSelect.onclick = function(){
+		if(onOff){
+			this.style.background = "#fff"
+			content.style.display = "none"
+			content1.style.display = "block"
+			content2.style.display = "none"
+		}else{
+			this.style.background = "url(./img/1.jpg)"
+			content.style.display = "block"
+			content1.style.display = "none"
+			content2.style.display = "none"
+		}
+		onOff = !onOff
+		emptys()
+	}
+	var forgot = tools.$(".forgot")[0]
+	forgot.onclick = function(){
+		content.style.display = "none"
+		content1.style.display = "none"
+		content2.style.display = "block"
+		emptys()
+	}
+	var markz = tools.$(".markz")[0]
+	var btnz = tools.$(".btnz")[0]
+	btnz.onclick = function(){
+		var val = markz.value
+		if(storage[val]){
+			alert("你的密码为："+JSON.parse(storage[val]).password+" 请牢记密码")
+			content.style.display = "block"
+			content1.style.display = "none"
+			content2.style.display = "none"
+		}else{
+			alert("你找的账户不存在")
+			markz.value = ""
+		}
+	}
+	var btnf = tools.$(".btnf")[0]
+	btnf.onclick = function(){
+		content.style.display = "block"
+		content1.style.display = "none"
+		content2.style.display = "none"
+		emptys()
+	}
+	var enroll = tools.$(".enroll")[0]
+	enroll.onclick = function(){
+		login.style.transform = "rotateY(-180deg)";
+		register.style.transform = "rotateY(0deg)";
+		login.style.zIndex = 1
+		register.style.zIndex = 2
+		emptys()
+	}
+	var markd = tools.$(".markd")[0]
+	var markdm = tools.$(".markdm")[0]
+	var btnd = tools.$(".btnd")[0]
+	btnd.onclick = function(){
+		var val1 = markd.value
+		var val2 = markdm.value
+		if(!storage[val1]){
+			alert("账号不存在")
+			markd.value = ""
+		}else{
+			if(JSON.parse(storage[val1]).password === val2){
+				this.setAttribute("href","./cloudlet.html?name="+val1)
+			}else{
+				alert("密码错误")
+				markdm.value = ""
+			}
+		}
+	}
+	//注册页面
+	var allSpan = tools.$("span",register)
+	for (var i = 0; i < allSpan.length; i++) {
+		allSpan[i].onOff = false
+	}
+	var names = tools.$('.name')[0]
+	var re1 = /^[a-zA-Z][a-zA-Z0-9]*$/
+	names.onblur = function(){
+		var val = this.value
+		if(!re1.test(val)){
+			this.nextElementSibling.nextElementSibling.style.display = "inline-block"
+			this.nextElementSibling.style.display = "none"
+			this.nextElementSibling.nextElementSibling.onOff = false
+		}else if(storage[val]){
+			this.nextElementSibling.style.display = "inline-block"
+			this.nextElementSibling.nextElementSibling.style.display = "none"
+			this.nextElementSibling.onOff = false
+		}else{
+			this.nextElementSibling.nextElementSibling.style.display = "none"
+			this.nextElementSibling.nextElementSibling.onOff = true
+			this.nextElementSibling.style.display = "none"
+			this.nextElementSibling.onOff = true
+		}
+	}
+	var thick = tools.$(".thick")[0]
+	var re2 = /^\w{10,16}$/
+	thick.onblur = function(){
+		var val = this.value
+		if(!re2.test(val)){
+			this.nextElementSibling.style.display = "inline-block"
+			this.nextElementSibling.onOff = false
+		}else{
+			this.nextElementSibling.style.display = "none"
+			this.nextElementSibling.onOff = true
+		}
+	}
+	thick.oninput = function(){
+		thicks.nextElementSibling.onOff = false
+		thicks.value = ""
+	}
+	var thicks = tools.$(".thicks")[0]
+	thicks.onblur = function(){
+		if(thick.value !== this.value){
+			this.nextElementSibling.style.display = "inline-block"
+			this.nextElementSibling.onOff = false
+		}else{
+			this.nextElementSibling.style.display = "none"
+			this.nextElementSibling.onOff = true
+		}
+	}
+	var post = tools.$(".post")[0]
+	var re3 = /^(\w|-)+@(\w|-){2,9}(\.(\w|-){2,9}){1,3}$/
+	post.onblur = function(){
+		var val = this.value
+		if(!re3.test(val)){
+			this.nextElementSibling.style.display = "inline-block"
+			this.nextElementSibling.onOff = false
+		}else{
+			this.nextElementSibling.style.display = "none"
+			this.nextElementSibling.onOff = true
+		}
+	}
+	var btnc = tools.$(".btnc")[0]
+	btnc.onclick = zc
+	function zc(){
+		if(allSpan[0].onOff&&allSpan[1].onOff&&allSpan[2].onOff&&allSpan[3].onOff&&allSpan[4].onOff){
+			var val = names.value
+			var obj = JSON.stringify({
+				name:val,
+				password:thick.value,
+				mail:post.value,
+				size:5412546,
+				files:[
+					{
+						id:0,
+						pid:-1,
+						title:"微云",
+						type:"file",
+						size : 0
+					},
+					{
+						id:1,
+						pid:0,
+						title:"默认文件夹",
+						type:"file",
+						size : 0
+					},
+					{
+						id : 2,
+			            pid : 0,
+			            title : "默认简历文档",
+			            type : "text",
+			            imgs : "url(./img/1-2.png)",
+			            read : "默认的文档，并没什么类容",
+			            size : 2304
+					},
+					{
+						id : 3,
+			            pid : 0,
+			            title : "默认图片",
+			            type : "imgs",
+			            imgs : "url(./img/1-5.png)",
+			            read : "./paper/1.png",
+			            size : 628736
+					},
+					{
+						id : 4,
+			            pid : 0,
+			            title : "默认音乐",
+			            type : "audio",
+			            imgs : "url(./img/1-3.png)",
+			            read : "./paper/didu.mp3",
+			            size : 2883584
+					},
+					{
+						id : 5,
+			            pid : 0,
+			            title : "默认视频",
+			            type : "video",
+			            imgs : "url(./img/1-4.png)",
+			            read : "./paper/team.webm",
+			            size : 1897922
+					}
+				]
+			})
+			storage[val] = obj
+			alert("注册成功")
+			login.style.transform = "rotateY(0deg)";
+			register.style.transform = "rotateY(180deg)";
+			login.style.zIndex = 2
+			register.style.zIndex = 1
+			content.style.display = "block"
+			content1.style.display = "none"
+			content2.style.display = "none"
+			onOff = true;
+			dealSelect.style.background = "url(./img/1.jpg)"
+		}else{
+			alert("每一项必须输入正确才能注册")
+			if(!allSpan[0].onOff){
+				allSpan[0].previousElementSibling.value = ""
+			}
+			if(!allSpan[1].onOff){
+				allSpan[1].previousElementSibling.previousElementSibling.value = ""
+			}
+			if(!allSpan[2].onOff){
+				allSpan[2].previousElementSibling.value = ""
+			}
+			if(!allSpan[3].onOff){
+				allSpan[3].previousElementSibling.value = ""
+			}
+			if(!allSpan[4].onOff){
+				allSpan[4].previousElementSibling.value = ""
+			}
+		}
+	}
+	var btnfh = tools.$(".btnfh")[0]
+	btnfh.onclick = function(){
+		login.style.transform = "rotateY(0deg)";
+		register.style.transform = "rotateY(180deg)";
+		login.style.zIndex = 2
+		register.style.zIndex = 1
+		content.style.display = "block"
+		content1.style.display = "none"
+		content2.style.display = "none"
+		onOff = true;
+		dealSelect.style.background = "url(./img/1.jpg)"
+		emptys()
+	}
+	window.onresize = function(){
+		document.body.style.height = window.innerHeight+"px"
+	}
+	document.body.style.height = window.innerHeight+"px"
+	var empty = tools.$(".empty")
+	function emptys(){
+		for (var i = 0; i < empty.length; i++) {
+			empty[i].value = ""
+		}
+	}
+</script>
+</body>
+</html>
+
+

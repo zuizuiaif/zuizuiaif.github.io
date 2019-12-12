@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淡隐淡出</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            margin: 100px auto 0;
+            width: 520px;
+            height: 280px;
+            border: 1px solid #000000;
+            position: relative;
+        }
+        #list {
+            list-style: none;
+            position: relative;
+        }
+        li {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+        li:nth-of-type(1){
+            z-index: 2;
+            opacity: 1;
+        }
+        img {
+            display: block;
+        }
+
+        #prev, #next {
+            position: absolute;
+            width: 30px;
+            height: 60px;
+            background: #000000;
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 60px;
+            text-align: center;
+            top: 110px;
+            cursor: pointer;
+            z-index: 100;
+        }
+        #prev {
+            left: 0;
+        }
+        #next {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="list">
+            <li><img src="images1/1.jpg" ></li>
+            <li><img src="images1/2.jpg" ></li>
+            <li><img src="images1/3.jpg" ></li>
+            <li><img src="images1/4.jpg" ></li>
+            <li><img src="images1/5.jpg" ></li>
+        </ul>
+        <span id="prev"> < </span>
+        <span id="next"> > </span>
+    </div>
+</body>
+<script src="tools.js"></script>
+<script src="MTween.js"></script>
+<script>
+    var list = $("#list");
+    var listLi = $("li",list);
+    var prev = $("#prev");
+    var next = $("#next");
+    var n = 0;
+    function cf(){
+        n++;
+        if(n > listLi.length - 1){
+            n = 0;
+        }
+        for (var i = 0; i < listLi.length; i++) {
+            listLi[i].style.zIndex = 2;
+            MTween(listLi[i],"opacity",1000,0,"linear")
+        }
+        listLi[n].style.zIndex = 3;
+        MTween(listLi[n],"opacity",1000,1,"linear");
+    }
+    function vf(){
+        n--;
+        if(n < 0){
+            n = listLi.length - 1;
+        }
+        for (var i = 0; i < listLi.length; i++) {
+            listLi[i].style.zIndex = 2;
+            MTween(listLi[i],"opacity",1000,0,"linear")
+        }
+        listLi[n].style.zIndex = 3;
+        MTween(listLi[n],"opacity",1000,1,"linear");
+    }
+    next.onclick = function(){
+        if(listLi[n].timer){
+            return;
+        }
+        cf();
+    }
+    prev.onclick = function(){
+        if(listLi[n].timer){
+            return;
+        }
+        vf();
+    }
+    var timer = setInterval(function(){
+        cf();
+    },2000)
+    next.onmouseover = function(){
+        clearInterval(timer);
+    }
+    next.onmouseout = function(){
+        timer = setInterval(function(){
+            cf();
+        },2000)
+    }
+    prev.onmouseover = function(){
+        clearInterval(timer);
+    }
+    prev.onmouseout = function(){
+        timer = setInterval(function(){
+            cf();
+        },2000)
+    }
+</script>
+</html>

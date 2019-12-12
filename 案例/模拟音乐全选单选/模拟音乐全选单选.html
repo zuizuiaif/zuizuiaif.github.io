@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>模拟音乐全选单选</title>
+<style>
+	body {
+		margin: 0;	
+		font: 16px/50px "微软雅黑";
+	}
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#list {
+		width: 600px;
+		border-bottom: 1px solid #ededed;
+	}
+	#list li {
+		width: 480px;
+		height: 50px;
+		border: 1px solid #eee;
+		padding: 0 100px 0 20px;
+	}
+	#list input{
+		float: left;
+		margin-top: 19px;
+	}
+	.L {
+		float: left;
+		margin-left: 10px;
+	}
+	.R {
+		float: right;
+	}
+	#box {
+		width: 580px;
+		padding-left: 20px;
+	}
+	#box span{
+		display: inline-block;
+		width: 40px;
+		border: 1px solid #000;
+		line-height: 26px;
+		padding-left: 30px;
+		border-radius: 5px;
+	}
+	#box span:nth-of-type(1){
+		margin-left: 200px;
+		background: url(img/1.png) no-repeat 10px 8px;
+	}
+	#box span:nth-of-type(2){
+		background: url(img/2.png) no-repeat 10px 8px;
+	}
+	#box span:nth-of-type(3){
+		background: url(img/3.png) no-repeat 10px 8px;
+	}
+	.back_color1 {
+		background: #f0f6f6;
+			}
+	.back_color2 {
+		background: #fff;
+	}
+</style>
+</head>
+<body>
+<ul id="list">
+    <li>
+    	<input type="checkbox" />
+    	<span class="L">不说再见</span>
+    	<span class="R">电影《谁的青春不迷茫》主题曲</span>
+    </li>
+    <li>
+    	<input type="checkbox" />
+    	<span class="L">一次就好</span>
+    	<span class="R">电影《夏洛特烦恼》主题曲</span>
+    </li>
+    <li>
+    	<input type="checkbox" />
+    	<span class="L">遗忘之前</span>
+    	<span class="R">电视剧《女医明妃传》主题曲</span>
+    </li>
+    <li>
+    	<input type="checkbox" />
+    	<span class="L">梅坞寻茶</span>
+    	<span class="R">少司命 -剑走偏锋</span>
+    </li>
+    <li>
+    	<input type="checkbox" />
+    	<span class="L">晓秋月明</span>
+    	<span class="R">天时—晓秋月明（完整版）</span>
+    </li>
+</ul>
+<div id="box">
+	<input type="checkbox" id="allCheck"/>
+	全选
+	<span>收藏</span>
+	<span>添加</span>
+	<span>删除</span>
+</div>
+<script>
+	var allCheck = document.getElementById("allCheck")
+	var list = document.getElementById("list");
+	var allBtn = list.getElementsByTagName("input");
+	var listLi = list.getElementsByTagName("li");
+	var m = 0;
+	//所有的li移出移入效果
+	for (var i = 0; i < listLi.length; i++) {
+		//保存当前下标
+		listLi[i].index = i;
+		//当i除以2余数为0的时候true
+		if(i % 2 == 0){
+			//修改li的class名
+			listLi[i].className = "back_color1";
+		//当i除以2余数不为0的时候false
+		}else{
+			//修改li的class名
+			listLi[i].className = "back_color2";
+		}
+		//当鼠标移入的时候
+		listLi[i].onmouseover = function(){
+			//修改li的背景颜色
+			this.style.background = "red";
+		}
+		//当鼠标移出的时候
+		listLi[i].onmouseout = function(){
+			//当allBtn点击了
+			if(allBtn[this.index].checked){
+			//当allBtn没点击	
+			}else{
+				//修改li的背景颜色为空
+				this.style.background = "";
+			}
+		}
+
+	}
+	//所有的btn点击时
+	for(var i = 0; i <allBtn.length; i++){
+		//bllBtn点击时
+		allBtn[i].onclick = function (){
+			//判断当前元素的真假
+			if(this.checked){
+				m++;
+			}else{
+				m--;
+			}
+			//当m的值等于所有按钮的个数时
+			if( m == allBtn.length ){
+            	allCheck.checked = true;
+            }else{
+            	allCheck.checked = false;
+            }
+		}
+	}
+	//当全选按钮点击的时候
+	allCheck.onclick = function (){
+		//操作所有的btn
+	    for( var i = 0; i < allBtn.length; i++ ){
+	    	//修改allBtn的开关等于当前元素的开关
+	        allBtn[i].checked = this.checked;
+	        //修改li的背景颜色
+	        listLi[i].style.background = "red";
+	    }
+	    //当当前元素为真的时候
+	    if( this.checked ){
+	    	//m的值为btn的长度
+	        m = allBtn.length;
+	    //当当前元素为假的时候
+	    }else{
+	    	//m的值为0
+	        m = 0;
+	        //设置所有的li的背景为空
+	        for (var y = 0; y < listLi.length; y++) {
+	        	listLi[y].style.background = "";
+	        }
+	    }
+
+	};   
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>相册切换</title>
+<style>
+	body{
+		margin: 0;
+		font-size: 12px;
+	}
+	#box{
+		position: relative;
+		margin: 0 auto;
+		width: 873px;
+		height: 551px;
+		background: url(img/img.png);
+	}
+	#btn1{
+		position: absolute;
+		top: 55px;
+		left: 30px;
+	}
+	#btn2{
+		position: absolute;
+		top: 55px;
+		left: 100px;
+	}
+	#img1{
+		position: absolute;
+		top: 113px;
+		left: 49px;
+	}
+	#img2{
+		position: absolute;
+		top: 113px;
+		right: 66px;
+	}
+	#box span:nth-of-type(1){
+		position: absolute;
+		left: 220px;
+		bottom: 160px;
+	}
+	#box span:nth-of-type(2){
+		position: absolute;
+		right: 130px;
+		bottom: 160px;
+	}
+	#box span:nth-of-type(3){
+		position: absolute;
+		left: 50px;
+		bottom: 150px;
+	}
+	#box span:nth-of-type(4){
+		position: absolute;
+		right: 295px;
+		bottom: 150px;
+	}
+</style>
+</head>
+<body>
+<section id="box">
+	<input type="button" value="上一页" id="btn1">
+	<input type="button" value="下一页" id="btn2">
+	<img src="img/aa.png" id="img1">
+	<img src="img/ba.png" id="img2">
+	<span>第一组第1张</span>
+	<span>第二组第1张</span>
+	<span>1/5</span>
+	<span>1/4</span>
+</section>
+<script>
+	var btn1 = document.getElementById("btn1");
+	var btn2 = document.getElementById("btn2");
+	var img1 = document.getElementById("img1");
+	var img2 = document.getElementById("img2");
+	var hint = document.getElementsByTagName("span");
+	var vehicle = ["aa.png","ab.png","ac.png","ad.png","ae.png"]
+	var scenery = ["ba.png","bb.png","bc.png","bd.png"]
+	var max = vehicle.length - 1;
+	var max1 =scenery.length - 1;
+	var n = 0;
+	var n1 = 0;
+	function ty1(){
+		img1.src = "img/"+vehicle[n];
+		hint[0].innerHTML = "第一组第"+(n+1)+"张";
+		hint[2].innerHTML = ""+(n+1)+"/"+(max+1)+"";
+	}
+	function ty2(){
+		img2.src = "img/"+scenery[n1];
+		hint[1].innerHTML = "第二组第"+(n1+1)+"张";
+		hint[3].innerHTML = ""+(n1+1)+"/"+(max1+1)+"";
+	}
+	btn1.onclick = function(){
+		n--;
+		if(n < 0){
+			n=max;
+		}
+		ty1();
+		n1--;
+		if (n1 < 0){
+			n1=max1
+		}
+		ty2();
+	}
+	btn2.onclick = function(){
+		n++;
+		if(n > max){
+			n=0;
+		}
+		ty1();
+		n1++;
+		if (n1 > max1){
+			n1=0;
+		}
+		ty2();
+	}
+	img1.onclick = function(){
+		n++;
+		if(n >max){
+			n = 0;
+		}
+		ty1();
+	}
+	img2.onclick = function(){
+		n1++;
+		if(n1 >max1){
+			n1 = 0;
+		}
+		ty2();
+	}
+</script>
+</body>
+</html>

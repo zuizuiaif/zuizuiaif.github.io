@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>电视排行榜</title>
+<style>
+	body{
+		width: 268px;
+		margin: 0 auto;
+		font: 12px "宋体";
+	}
+	h1{
+		margin: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	ol{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.clearFix:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+	#header{
+		background: #dee7e7;
+		width: 255px;
+		padding: 0 7px 0 6px;
+		border-bottom: 1px solid #94bdd6;
+	}
+	#header h1{
+		float: left;
+		font-size: 18px;
+		line-height: 37px;
+		color: #425a6b;
+	}
+	#header nav{
+		margin-bottom: -1px;
+		float: right;
+		padding-top: 12px;
+		line-height: 24px;
+	}
+	#header nav a{
+		width: 35px;
+		text-align: center;
+		float: left;
+		color: #185273;
+		border: 1px solid #94bdd6;
+		border-left: none;
+	}
+	#header nav a:nth-of-type(1){
+		background: #fff;
+		border-bottom: none;
+		border-left: 1px solid #94bdd6;
+		padding-bottom: 1px;
+		margin-bottom: -1px;
+	}
+	#list1{
+		width: 255px;
+		background: #dee7e7;
+		padding: 0 7px 0 6px;
+	}
+	#list1 li{
+		padding: 8px 0 6px 8px;
+		border-bottom: 1px dashed #fff;
+	}
+	#list1 li span{
+		float: left;
+		width: 17px;
+		height: 14px;
+		background: #21638c;
+		text-align: center;
+		color: #fff;
+	}
+	#list1 li img{
+		float: left;
+		display: none;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+	#list1 li a{
+		float: left;
+		padding-left: 12px;
+	}
+	#list1 li p{
+		float: right;
+		width: 29px;
+		line-height: 22px;
+		color: #fff;
+		padding-left: 12px;
+		background: #21638c url(img/3.png) no-repeat 5px 7px;
+		display: none;
+		cursor: pointer;
+	}
+	#list1 li:nth-of-type(1) img{
+		display: block;
+	}
+	#list1 li:nth-of-type(1) a{
+		width: 110px;
+	}
+	#list1 li:nth-of-type(1) p{
+		display: block;
+	}
+	#list2{
+		width: 255px;
+		background: #dee7e7;
+		padding: 0 7px 0 6px;
+		display: none;
+	}
+	#list2 li{
+		padding: 8px 0 6px 8px;
+		border-bottom: 1px dashed #fff;
+	}
+	#list2 li span{
+		float: left;
+		width: 17px;
+		height: 14px;
+		background: #21638c;
+		text-align: center;
+		color: #fff;
+	}
+	#list2 li img{
+		float: left;
+		display: none;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+	#list2 li a{
+		float: left;
+		padding-left: 12px;
+	}
+	#list2 li p{
+		float: right;
+		width: 29px;
+		line-height: 22px;
+		color: #fff;
+		padding-left: 12px;
+		background: #21638c url(img/3.png) no-repeat 5px 7px;
+		display: none;
+		cursor: pointer;
+	}
+	#list2 li:nth-of-type(1) img{
+		display: block;
+	}
+	#list2 li:nth-of-type(1) a{
+		width: 110px;
+	}
+	#list2 li:nth-of-type(1) p{
+		display: block;
+	}
+	#list3{
+		width: 255px;
+		background: #dee7e7;
+		padding: 0 7px 0 6px;
+		display: none;
+	}
+	#list3 li{
+		padding: 8px 0 6px 8px;
+		border-bottom: 1px dashed #fff;
+	}
+	#list3 li span{
+		float: left;
+		width: 17px;
+		height: 14px;
+		background: #21638c;
+		text-align: center;
+		color: #fff;
+	}
+	#list3 li img{
+		float: left;
+		display: none;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+	#list3 li a{
+		float: left;
+		padding-left: 12px;
+	}
+	#list3 li p{
+		float: right;
+		width: 29px;
+		line-height: 22px;
+		color: #fff;
+		padding-left: 12px;
+		background: #21638c url(img/3.png) no-repeat 5px 7px;
+		display: none;
+		cursor: pointer;
+	}
+	#list3 li:nth-of-type(1) img{
+		display: block;
+	}
+	#list3 li:nth-of-type(1) a{
+		width: 110px;
+	}
+	#list3 li:nth-of-type(1) p{
+		display: block;
+	}
+</style>
+</head>
+<body>
+<header id="header" class="clearFix">
+	<h1>观看排行榜</h1>
+	<nav class="clearFix" id="nav">
+		<a href="javascript:;">每日</a>
+		<a href="javascript:;">每周</a>
+		<a href="javascript:;">全部</a>
+	</nav>
+</header>
+<ol id="list1">
+	<li class="clearFix">
+		<span>1</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问1</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>2</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问1</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>3</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问1</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>4</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问1</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>5</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问1</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>6</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问1</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>7</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问1</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>8</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问1</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>9</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问1</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>10</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问1</a>
+		<p>播放</p>
+	</li>
+</ol>
+<ol id="list2">
+	<li class="clearFix">
+		<span>1</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问2</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>2</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问2</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>3</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问2</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>4</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问2</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>5</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问2</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>6</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问2</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>7</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问2</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>8</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问2</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>9</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问2</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>10</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问2</a>
+		<p>播放</p>
+	</li>
+</ol>
+<ol id="list3">
+	<li class="clearFix">
+		<span>1</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问3</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>2</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问3</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>3</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问3</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>4</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问3</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>5</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问3</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>6</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问3</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>7</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问3</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>8</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问3</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>9</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问3</a>
+		<p>播放</p>
+	</li>
+	<li class="clearFix">
+		<span>10</span>
+		<img src="img/2.png">
+		<a href="#">解密：关于地球与人类的一千零一问3</a>
+		<p>播放</p>
+	</li>
+</ol>
+<script>
+	function tab(obj){
+		var listLi = obj.getElementsByTagName("li");
+		var imgs = obj.getElementsByTagName("img");
+		var aa = obj.getElementsByTagName("a");
+		var pp = obj.getElementsByTagName("p");
+		for (var i = 0; i < listLi.length; i++) {
+			listLi[i].index = i;
+			listLi[i].onmouseover = function(){
+				for (var o = 0; o < listLi.length; o++) {
+					imgs[o].style.display = "none";
+					pp[o].style.display = "none";
+					aa[o].style.width = "auto";
+				}
+				imgs[this.index].style.display = "block";
+				pp[this.index].style.display = "block";
+				aa[this.index].style.width = "110px"
+			}
+		}
+	}
+	var navs = document.getElementById("nav")
+	var list = document.getElementsByTagName("ol")
+	var navsA = navs.getElementsByTagName("a")
+	for (var i = 0; i < navsA.length; i++) {
+		navsA[i].xb = i;
+		navsA[i].onclick = function(){
+			for (var o = 0; o < navsA.length; o++) {
+				navsA[o].style.background = "#dee7e7";
+				list[o].style.display = "none";
+			}
+			this.style.background = "#fff";
+			list[this.xb].style.display = "block";
+		}
+	}
+	for (var i = 0; i < list.length; i++) {
+		tab(list[i]);
+	}
+</script>
+</body>
+</html>

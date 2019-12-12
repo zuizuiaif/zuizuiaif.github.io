@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+<style>
+    td {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<form action="" name="form">
+    <p>
+        姓名:<input type="text" name="username" id="xm" />
+    </p>
+    <p>
+        年龄:<input type="text" name="age" id="nl" />
+    </p>
+    <p>
+        性别: <select name="sex" id="xb">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+    </p>
+    <p>
+        <input type="button" value="添加" name="add" id="btn" />
+    </p>
+</form>
+    <input type="button" value="批量删除"  class="btn"> 
+    <input type="button" value="年龄从小到大"  class="btn"> 
+    <table id="tab1" width="100%" border="1">
+
+        <thead>
+        <tr>
+            <th>
+                <input id="draw" type="checkbox"/> 全选
+            </th>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+           <!--  <tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>1</td>
+                <td>LEO</td>
+                <td>36</td>
+                <td>男</td>
+                <td>
+                    <a href="javascript:;">上移</a> |
+                    <a href="javascript:;">下移</a> |
+                    <a href="javascript:;">删除</a>
+                </td>
+            </tr> -->
+        </tbody>
+
+    </table>
+</body>
+<script src="tools.js"></script>
+<script>
+    var arr = [
+        {
+            'id' : 1,
+            'username' : 'LEO',
+            'age' : 36,
+            'sex' : '男',
+            'kg' : 'false'
+        },
+        {
+            'id' : 2,
+            'username' : 'MOMO',
+            'age' : 16,
+            'sex' : '男',
+            'kg' : 'false'
+        },
+        {
+            'id' : 3,
+            'username' : 'DUODUO',
+            'age' : 29,
+            'sex' : '男',
+            'kg' : 'false'
+            
+        },
+        {
+            'id' : 4,
+            'username' : '勇升',
+            'age' : 46,
+            'sex' : '男',
+            'kg' : 'false'
+        },
+        {
+            'id' : 5,
+            'username' : '小美',
+            'age' : 46,
+            'sex' : '女',
+            'kg' : 'false'
+        }
+    ];
+    var tab1 = tools.$('#tab1')
+    var btn = tools.$('#btn')
+    var xm = tools.$('#xm')
+    var nl = tools.$('#nl')
+    var xb = tools.$('#xb')
+    var draw = tools.$("#draw")
+    var allDraw = tools.$("input",tab1.tBodies[0])
+    var btns = tools.$(".btn")
+    var sc = tools.$(".sc")
+    var m = 0;
+    var n = 5
+    function fn(){	//渲染页面
+        for (var i = 0; i < arr.length; i++) {   //遍历arr的每一项
+            var tr = document.createElement("tr")
+            var inputs = document.createElement("input"); //创建
+            inputs.type = "checkbox";	//input改为选择按钮
+            console.log(arr[i].kg , "true")
+
+            if(arr[i].kg == "true"){
+            	console.log(123)
+                inputs.setAttribute("checked","1")
+            }else{
+                inputs.checked = false;
+            }
+            var td1 = document.createElement("td");
+            td1.appendChild(inputs); //先插入input选择按钮到td
+            tr.appendChild(td1)		//插入td到tr
+            for(var attr in arr[i]){	//遍历arr的所有数据，插入到td
+                if(attr !== "kg"){		//arr的项有kg的忽略不渲染
+                   var td = document.createElement("td")	//创建td
+                    td.innerHTML = arr[i][attr]		//把遍历的每个数据插入td
+                    tr.appendChild(td)			//把td插入tr
+                }
+            }
+            tab1.tBodies[0].appendChild(tr)//把刚才的所有tr放在tab1中，渲染完毕
+            tr.innerHTML += '<td><a href="javascript:;" class="sc">删除</a></td>'//后面添加一个删除按钮 
+        }
+        fun()
+        fn2()
+    }
+    fn()
+    btn.onclick = function(){		//点击添加按钮
+        if(xm.value == "" || nl.value == ""){ //判断姓名和年龄是否为空
+            alert("请输入类容")
+            return	//为空不添加
+        }
+        n++		//id每次加1
+        var atr = {				//生成新添加的信息保存到atr
+            'id' : n,
+            'username' : xm.value,
+            'age' : nl.value,
+            'sex' : xb.value,
+            'kg' : 'false'
+        }
+        tab1.tBodies[0].innerHTML = ""		//清除原有类容
+        arr.push(atr)					//把atr放到arr中
+        draw.checked = false;			//添加时draw不勾上
+        draw.disabled = false;			//draw可以勾选
+        if(onOffs){					//点击了排序后
+        	 if(onOff){					//开关为true
+	            arr.sort(function(a,b){			//数组从小到大排序
+	                return b.age - a.age;
+	            })
+	        }else{
+	            arr.sort(function(a,b){			//数组从大到小排序
+	                return a.age - b.age;
+	            })
+	        }
+        }
+        fn()							//重新渲染页面
+    }
+    function fun(){		//单选和全选
+        for (var i = 0; i < allDraw.length; i++) {  //所有的allDraw
+            allDraw[i].index = i   //保留下标
+            allDraw[i].onclick = function(){	//每个allDraw的点击
+                if(this.checked){				//当allDraw已经勾上
+                    m++;						//m每次加1
+                    arr[this.index].kg = 'true'	//arr当前对象的kg为true
+                }else{
+                    m--;						//m每次减1
+                    arr[this.index].kg = 'false'//arr当前对象的kg为true
+                }
+                if( m == allDraw.length ){	//如果m的值等于allDraw.length
+                    draw.checked = true;	//说明allDraw全部勾上，则draw勾上
+                }else{						
+                    draw.checked = false;	//反之draw不勾上
+                }
+            }
+        }
+        draw.onclick = function(){	//当点击draw的时候
+            if( this.checked ){		//判断是否勾上，没勾上时
+                m = allDraw.length;		//m保存等于allDraw长度，便于使用
+                for( var j = 0; j < allDraw.length; j++ ){
+                    allDraw[j].checked = true; //所有的allDraw勾上
+                    arr[j].kg = "true"  //arr所有的对象的kg为true
+
+                }
+            }else{
+                m = 0;  			//m保存等于0，便于使用
+                for( var j = 0; j < allDraw.length; j++ ){
+                    allDraw[j].checked = false;//所有的allDraw不勾上
+                    arr[j].kg = "false"  //arr所有的对象的kg为false
+                }
+            }
+        }
+    }
+    fun()
+    btns[0].onclick = function(){ //点击批量删除的时候
+        for (var i = 0; i < allDraw.length; i++) {	//遍历所有的allDraw
+            if(allDraw[i].checked){		//看allDraw是否选上
+            	//allDraw选上的，则删除allDraw的父级的父级，即tr
+                tab1.tBodies[0].removeChild(allDraw[i].parentNode.parentNode);
+                arr.splice(i,1);  //删除arr的数据
+                i--;			//每次减1 ，否则清理不干净
+            }
+        }
+        if(sc.length === 0){	//当删除完的时候，
+            draw.disabled = true;//draw为不可编辑状态
+        }
+        draw.checked = false;//draw不勾上
+    }
+    function fn2(){			//单个删除
+        for (var i = 0; i < sc.length; i++) {		//所有的删除绑定事件
+            sc[i].onclick = function(){			//点击删除的时候
+            	//删除allDraw的父级的父级，即tr
+                tab1.tBodies[0].removeChild(this.parentNode.parentNode)
+                i-- //i每次减1
+                arr.splice(i,1);  //删除arr的数据
+                if(sc.length === 0){	//当删除完的时候，
+                    draw.checked = false;	//draw不勾上
+                    draw.disabled = true;	//draw为不可编辑状态
+                }
+            }
+        }
+    }
+    fn2()
+    var onOff = true;		//定义一个开关
+    var onOffs = false;		//用来判断是否点击过排序
+    btns[1].onclick = function(){	//点击排序的时候
+    	onOffs = true;			//点击了排序
+        if(onOff){					//开关为true
+            this.value = "年龄从大到小"		//更改value值
+            arr.sort(function(a,b){			//数组从小到大排序
+                return a.age - b.age;
+            })
+        }else{
+            this.value = "年龄从小到大"
+            arr.sort(function(a,b){			//更改value值
+                return b.age - a.age;		//数组从大到小排序
+            })
+        }
+        tab1.tBodies[0].innerHTML = ""		//清除原有类容
+        onOff = !onOff;			//开关取反
+        fn()					//重新渲染页面
+    }
+</script>
+</html>

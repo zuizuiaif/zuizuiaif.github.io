@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>模拟qq好友列表</title>
+<style>
+	section{
+		width: 200px;
+		margin: 20px auto 0;
+		border: 1px solid #000;
+	}
+	ul{
+		width: 200px;
+		padding: 0;
+		margin: 0;
+		display: none;
+	}
+	li{
+		text-indent: 20px;
+		list-style: none;
+		border-bottom: 1px solid #000;
+	}
+	div{
+		text-indent: 20px;
+		width: 200px;
+		background: #63f7ff url(img/1.png) no-repeat 10px center;
+	}
+	.block{
+		display: block;
+	}
+	.back{
+		background: #f7f794 url(img/2.png) no-repeat 8px center;
+	}
+	.backgr{
+		background: #63f7ff;
+	}
+</style>
+</head>
+<body>
+<section>
+	<div>我的好友</div>
+	<ul>
+		<li>张三</li>
+		<li>张三</li>
+		<li>张三</li>
+	</ul>
+	<div>企业好友</div>
+	<ul>
+		<li>李四</li>
+		<li>李四</li>
+		<li>李四</li>
+	</ul>
+	<div>黑名单</div>
+	<ul>
+		<li>王五</li>
+		<li>王五</li>
+		<li>王五</li>
+	</ul>
+</section>
+<script>
+	var box = document.getElementsByTagName("div");
+	var list = document.getElementsByTagName("ul");
+	var listLi = document.getElementsByTagName("li");
+	var cur = 0;
+	//给每一个div添加点击处理
+	for(var i = 0;i < box.length; i++){
+		//定义box的默认开关为true
+		box[i].onOff = true;
+		//自定义一个属性，保存下标
+		box[i].index = i;
+		//div点击时
+		box[i].onclick = function(){
+			//box为真的时候
+			if(this.onOff){
+				//清除box的class名
+				box[cur].className = "";
+				//清除list的class名
+				list[cur].className = "";
+				//清除listli的class名
+				listLi[curr].className = "";
+				//更改listli的开关为true
+				listLi[curr].onOfff = true;
+				//设置当前的box的class名为back
+				this.className = "back";
+				//设置当前的list的class名为block
+				list[this.index].className = "block";
+				//更改box的开关为true
+				box[cur].onOff = true;
+				//保存当前点击的input的下标
+				cur = this.index; 
+				//改当前的box开关为false
+				this.onOff = false;
+			//box为假的时候
+			}else{
+				//清除div的class名
+				box[cur].className = "";
+				//清除ul的class名
+				list[cur].className = "";
+				//改当前的box开关为true
+				this.onOff = true;
+				//保存当前点击的input的下标
+				cur = this.index;
+			}
+		}
+	}
+	//给每一个li添加点击处理
+	var curr = 0;
+	for(var o = 0; o < listLi.length; o++){
+		listLi[o].indexx = o;
+		//定义box的默认开关为true
+		listLi[o].onOfff = true;
+		//点击li时
+		listLi[o].onclick = function(){
+			//li为真的时候
+			if(this.onOfff){
+				//清除li的class名
+				listLi[curr].className = "";
+				//改变当前li的class名
+				this.className = "backgr";
+				//改li开关为true
+				listLi[curr].onOfff = true;
+				//改当前li的开关为false
+				this.onOfff = false;
+				//保存当前点击的input的下标
+				curr = this.indexx;
+			//li为真的时候
+			}else{
+				//清除当前li的class名
+				this.className = "";
+				//改当前li的开关为true
+				this.onOfff = true;
+			}
+		}
+	}
+</script>
+</body>
+</html>

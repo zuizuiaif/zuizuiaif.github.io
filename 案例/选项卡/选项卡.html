@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>选项卡</title>
+<style>
+	div{
+		width: 100px;
+		height: 100px;
+		background: #000;
+		text-align: center;
+		font-size: 10px;
+		line-height: 100px;
+		color: #fff;
+		display: none;
+	}
+	.red{
+		background: red;
+	}
+	.box{
+		display: block;
+	}
+</style>
+</head>
+<body>
+<input type="button" value="按钮1" class="red">
+<input type="button" value="按钮2">
+<input type="button" value="按钮3">
+<div class="box">按钮1</div>
+<div>按钮2</div>
+<div>按钮3</div>
+<script>
+	var btn = document.getElementsByTagName("input");
+	var box = document.getElementsByTagName("div");
+	//给每一个加上点击
+	for(var i = 0;i < box.length; i++){
+		//自定义
+		btn[i].index = i;
+		//点击btn时
+		btn[i].onclick = function(){
+			for(var n = 0;n < box.length; n++){
+				btn[n].className = "";
+				box[n].style.display = "none";
+			}
+			this.className = "red";
+			box[this.index].style.display = "block";
+		}  
+		
+	}
+</script>
+</body>
+</html>

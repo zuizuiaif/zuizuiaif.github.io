@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>生成V字形</title>
+<style>
+	#box{
+		margin-top: 30px;
+		width: 500px;
+		height: 300px;
+		position: relative;
+	}
+	#box div{
+		width: 100px;
+		height: 100px;
+		background: red;
+		text-align: center;
+		color: #fff;
+		float: left;
+		font: 50px/100px "宋体";
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+</style>
+</head>
+<body>
+<input type="button" value="生成V字形" id="btn">
+<section id="box">
+	<!-- <div></div> -->
+</section>
+<script>
+	var btn = document.getElementById("btn");
+	var box = document.getElementById("box");
+	var boxDiv = box.getElementsByTagName("div");
+	btn.onclick = function(){
+		box.innerHTML = "";
+		for(var i = 0; i < 5; i++){
+			box.innerHTML = box.innerHTML + "<div>"+i+"</div>";
+		}
+		if(i = 1){
+			boxDiv[i].style.cssText = "top: 100px;left: 100px;"
+		}if(i = 2){
+			boxDiv[i].style.cssText = "top: 200px;left: 200px;"
+		}if(i = 3){
+			boxDiv[i].style.cssText = "top: 100px;left: 300px;"
+		}if(i = 4){
+			boxDiv[i].style.cssText = "left: 400px;"
+		}
+	}
+</script>
+</body>
+</html>

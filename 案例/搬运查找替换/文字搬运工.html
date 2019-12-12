@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>文字搬运工</title>
+<style>
+*{ margin:0; padding:0; list-style:none}
+#box{ margin:30px auto; width:980px; background-color:#FFFBF9; border:5px solid #BCC1C4; height:310px;}
+.fl{ float:left; margin:5px; border:1px dotted #c90; height:300px;}
+.one{ background-color: #F0EED7; width:380px;}
+textarea{ background-color: #F0EED7; width:380px; height:300px; outline:none; resize:none;}
+.two{width:160px;}
+.two input{width:100px; height:30px; line-height:30px; text-align:center;}
+.two p{margin:10px 0;text-align:center;}
+.three{ background-color: #FAF5C6; width:380px;word-break: break-all;}
+#speedLi{ height:10px; width:140px; margin:10px auto; height:10px;display: none;}
+#speedLi li{width:10px; height:10px; margin:0 2px; background:#ccc; float:left;}
+.active{
+	background: #f90;
+}
+</style>
+</head>
+<body>
+
+<div id="box">
+	<div class="fl one">
+		<textarea name="" id="text" cols="30" rows="10">《泱泱大唐》是黄昏前面所写的网络小说，连载于起点中文网。作品简介：长安月下，美人如梦；宫阙殿里，意气如风；</textarea>
+	</div>
+	<div class="fl two">
+		<p><input type="button" value="从左到右移动" id="btn"/></p>
+		<p id="numtex">0/0</p>
+		<div></div>
+		<ul id="speedLi">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="fl three" id="showTex"></div>
+</div>
+</body>
+<script src="tools.js"></script>
+<script src="MTween.js"></script>
+<script>
+	var btn = $("#btn");
+	var text = $("#text");
+	var numtex = $("#numtex");
+	var showTex = $("#showTex");
+	var speed = $("#speedLi")
+	var speedLi = $("li",speed);
+	var timer;
+	btn.onclick = function(){
+		speed.style.display = "block";
+		if(timer) return;
+		var html = text.value;
+		var n = 0;
+		var m = 0;
+		showTex.innerHTML = "";
+		var arr = html.split("");
+		numtex.innerHTML = 0 + "/" + arr.length;
+		if(html=='') return;
+		timer = setInterval(function(){
+			n++;
+			m++;
+			for (var i = 0; i < speedLi.length; i++) {
+				speedLi[i].style.background = "";
+			}
+			if(m >speedLi.length){
+				m = 0;
+			}
+			speedLi[m].style.background = "#f90";
+			numtex.innerHTML = n + "/" + arr.length;
+			showTex.innerHTML += arr[n-1];
+			text.value = html.substring(n);
+			if(n >= arr.length){
+				clearInterval(timer);
+				timer = null;
+				setTimeout(function(){
+					speed.style.display = "none";
+				},100)
+			}
+		},100)
+	}
+</script>
+</html>
+

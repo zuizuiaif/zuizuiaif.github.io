@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>时间滚动</title>
+<style>
+    #box{
+        height: 210px;
+        overflow: hidden;
+    }
+    img{
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+</style>
+</head>
+<body>
+    <div id="box">
+        <div id="box1">
+            <img src="img/0.png">
+            <img src="img/0.png">
+            <img src="img/fuh.png">
+            <img src="img/0.png">
+            <img src="img/0.png">
+            <img src="img/fuh.png">
+            <img src="img/0.png">
+            <img src="img/0.png">
+        </div>
+        <div id="box2">
+            <img src="img/0.png">
+            <img src="img/0.png">
+            <img src="img/fuh.png">
+            <img src="img/0.png">
+            <img src="img/0.png">
+            <img src="img/fuh.png">
+            <img src="img/0.png">
+            <img src="img/0.png">
+        </div>
+    </div> 
+</body>
+<script src="tools.js"></script>
+<script src="MTween.js"></script>
+<script>
+    var imgs1 = $("img",$("#box1"));
+    var imgs2 = $("img",$("#box2"));
+    var now = new Date();
+    var d = new Date();
+    var old = "";
+    var str = addZero(d.getHours())+":"+ addZero(d.getMinutes())+":"+addZero(d.getSeconds());
+    function addZero(n){
+        return n < 10 ? "0"+n : n;
+    }
+    var d = new Date();
+    var str = addZero(d.getHours())+":"+ addZero(d.getMinutes())+":"+addZero(d.getSeconds());
+    for( var i = 0; i < str.length; i++ ){
+        if( str.charAt(i) === ":" ){
+            imgs1[i].src = "img/fuh.png";
+            imgs2[i].src = "img/fuh.png";
+        }else{
+            imgs1[i].src = "img/"+str.charAt(i)+".png"
+            imgs2[i].src = "img/"+str.charAt(i)+".png"
+        }
+    }
+    old = str;
+    setInterval(function(){
+        var d = new Date();
+        var str = addZero(d.getHours())+":"+ addZero(d.getMinutes())+":"+addZero(d.getSeconds());
+        for( var i = 0; i < str.length; i++ ){
+            if( str.charAt(i) === ":" ){
+                imgs1[i].src = "img/fuh.png";
+                imgs2[i].src = "img/fuh.png";
+            }else{
+                imgs2[i].src = "img/"+str.charAt(i)+".png"
+            }
+        }
+        for( var i = 0; i < str.length; i++ ){
+           if( str.charAt(i) !== old.charAt(i) ){
+                dd(i);
+           }
+        }
+        function dd(i){
+            MTween(imgs1[i],"top",500,-210,"linear",function(){
+                for(var j = 0; j < str.length; j++){
+                    imgs1[j].style.top = 0;
+                }
+                imgs1[i].src = "img/"+str.charAt(i)+".png"
+            })
+            MTween(imgs2[i],"top",500,-210,"linear",function(){
+                for(var j = 0; j < str.length; j++){
+                    imgs2[j].style.top = 0;
+                }
+            })
+        }
+        old = str;
+    },1000);
+    var onOff = true;
+    setInterval(function(){
+        if(onOff){
+            imgs1[2].src = "img/fuh.png";
+            imgs1[5].src = "img/fuh.png";
+            onOff = false;
+        }else{
+            imgs1[2].src = "img/nfh.png";
+            imgs1[5].src = "img/nfh.png";
+            onOff = true;
+        }
+    },500);
+    
+
+
+
+</script>
+</html>

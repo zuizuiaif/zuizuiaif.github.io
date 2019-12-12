@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>利用函数传参调用修改内容</title>
+<style>
+	.clearFix:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+	header{
+		width: 450px;
+		padding-left: 50px;
+		font: 24px/50px "微软雅黑";
+		background: #6ba542;
+		color: #fff;
+	}
+	#box1,
+	#box2{
+		width: 450px;
+		height: 40px;
+		padding: 10px 0 0 50px;
+		border-top: 1px solid red;
+	}
+	#box1 div,
+	#box2 div{
+		float: left;
+	}
+	#box1 img,
+	#box2 img{
+		float: left;
+		margin-left: 10px;
+	}
+	#box1 input,
+	#box2 input{
+		float: left;
+		display: none;
+	}
+</style>
+</head>
+<body>
+<header>分类名称</header>
+<section id="box1" class="clearFix">
+	<div>秒味远程课堂</div>
+	<img src="img/1.png">
+	<input type="text">
+	<input type="button" value="保存">
+	<input type="button" value="取消">
+</section>
+<section id="box2" class="clearFix">
+	<div>秒味远程课堂</div>
+	<img src="img/1.png">
+	<input type="text">
+	<input type="button" value="保存">
+	<input type="button" value="取消">
+</section>
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	function tab(obj){
+		var divs = obj.getElementsByTagName("div")[0];
+		var imgs = obj.getElementsByTagName("img")[0];
+		var inputs = obj.getElementsByTagName("input");
+		imgs.onclick = function(){
+			this.style.display = "none";
+			divs.style.display = "none";
+			inputs[0].style.display = "block";
+			inputs[0].value = divs.innerHTML;
+			inputs[1].style.display = "block";
+			inputs[2].style.display = "block";
+		}
+		inputs[1].onclick = function(){
+			if(inputs[0].value != ""){
+				this.style.display = "none";
+				divs.innerHTML = inputs[0].value;
+				inputs[0].style.display = "none";
+				inputs[2].style.display = "none";
+				divs.style.display = "block";
+				imgs.style.display = "block";
+			}else{
+				alert("请输入内容");
+			}
+		}
+		inputs[2].onclick = function(){
+			this.style.display = "none";
+			inputs[0].style.display = "none";
+			inputs[1].style.display = "none";
+			divs.style.display = "block";
+			imgs.style.display = "block";
+		}
+	}
+	var tab1 = $("box1");
+	tab(tab1);
+	var tab2 = $("box2");
+	tab(tab2);
+</script>
+</body>
+</html>

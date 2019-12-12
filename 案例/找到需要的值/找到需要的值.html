@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>找到需要的值</title>
+</head>
+<body>
+	<h2>
+		'100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元', 5, Number('abc'), function(){ alert(3); }, 'xyz'-90 
+	</h2>
+	<input type="button" value="所有的数字">
+	<p>1、找到arr里所有的数字：</p>
+	<input type="button" value="可以转成数字">
+	<p>2、找到可以转成数字的：</p>
+	<input type="button" value="最大值">
+	<p>3、把转成数字以后，最大值判断出来：</p>
+	<input type="button" value="位置">
+	<p>4、把 NaN 所在的位置找出来：</p>
+</body>
+<script>
+	var btn = document.getElementsByTagName("input");
+	var pp = document.getElementsByTagName("p");
+	var arr = [ '100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元', 5, Number('abc'), function(){ alert(3); }, 'xyz'-90 ];
+	btn[0].onclick = function(){
+		pp[0].innerHTML = "1、找到arr里所有的数字："+ "";
+		for (var i = 0; i < arr.length; i++) {
+			if(typeof arr[i] == "number"){
+				if(!isNaN(arr[i])){
+					pp[0].innerHTML += arr[i] +" ";
+				}
+			}
+		}
+	}
+	btn[1].onclick = function(){
+		pp[1].innerHTML = "2、找到可以转成数字的：" + "";
+		for (var i = 0; i < arr.length; i++) {
+			if(parseFloat(arr[i]) || arr[i] == 0){
+				pp[1].innerHTML += arr[i] +" ";
+			}
+		}
+	}
+	btn[2].onclick = function(){
+		pp[2].innerHTML = "3、把转成数字以后，最大值判断出来：" + "";
+		var num = -Infinity;
+		for (var i = 0; i < arr.length; i++) {
+			if(parseFloat(arr[i])){
+				if( num < arr[i] ){
+					num = arr[i]
+				}
+			}
+		}
+		pp[2].innerHTML += num;
+	}
+	btn[3].onclick = function(){
+		pp[3].innerHTML = "4、把 NaN 所在的位置找出来：" + "";
+		for (var i = 0; i < arr.length; i++) {
+			if(typeof arr[i] == "number"){
+				if(isNaN(arr[i])){
+					pp[3].innerHTML += i +" ";
+				}
+			}
+		}
+	}
+</script>
+</html>

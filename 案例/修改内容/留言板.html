@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>留言板</title>
+</head>
+<body>
+	<input type="text" id="text">
+	<input type="button" id="btn" value="发表留言">
+	<ul id="list">
+		<li>aaa</li>
+	</ul>
+<script>
+	var text = document.getElementById("text");
+	var btn = document.getElementById("btn");
+	var list = document.getElementById("list");
+	//点击btn时
+	btn.onclick =function(){
+		//获取text的value值
+		var textInput = text.value;
+		//修改list内容
+		list.innerHTML = list.innerHTML + "<li>"+textInput+"</li>";
+	}
+</script>
+</body>
+</html>

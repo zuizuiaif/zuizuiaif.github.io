@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>轮播</title>
+<style>
+	#box{
+		width: 712px;
+		height: 568px;
+		background: url(img1/box.png);
+		margin: 0 auto;
+		position: relative;
+	}
+	#imgs{
+		position: absolute;
+		top: 41px;
+		left: 14px;
+	}
+	#imgs img{
+		display: none;
+	}
+	#imgs .db{
+		display: block;
+	}
+	#box1{
+		width: 51px;
+		height: 51px;
+		border-radius: 22px;
+		background: #ffb000 url(img1/l.png) no-repeat center center;
+		position: absolute;
+		top: 242px;
+		left: 43px;
+		opacity: .5;
+	}
+	#box2{
+		width: 51px;
+		height: 51px;
+		border-radius: 22px;
+		background: #ffb000 url(img1/r.png) no-repeat center center;
+		position: absolute;
+		top: 242px;
+		right: 47px;
+		opacity: .5;
+	}
+	#boxSpan span{
+		width: 15px;
+		height: 15px;
+		border-radius: 8px;
+		background: #fff;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	#boxSpan span:nth-of-type(1){
+		top: 517px;
+		left: 279px;
+	}
+	#boxSpan span:nth-of-type(2){
+		top: 517px;
+		left: 304px;
+	}
+	#boxSpan span:nth-of-type(3){
+		top: 517px;
+		left: 329px;
+	}
+	#boxSpan span:nth-of-type(4){
+		top: 517px;
+		left: 354px;
+	}
+	#boxSpan span:nth-of-type(5){
+		top: 517px;
+		left: 379px;
+	}
+	#boxSpan .back{
+		background: #efbd00;
+	}
+	#boxSpan img{
+		position: absolute;
+		top:428px;
+		left: 0;
+		display: none;
+	}
+	#boxSpan img:nth-of-type(1){
+		left: 227px;
+	}
+	#boxSpan img:nth-of-type(2){
+		left: 251px;
+	}
+	#boxSpan img:nth-of-type(3){
+		left: 277px;
+	}
+	#boxSpan img:nth-of-type(4){
+		left: 301px;
+	}
+	#boxSpan img:nth-of-type(5){
+		left: 326px;
+	}
+</style>
+</head>
+<body>
+<section id="box">
+	<section id="imgs">
+		<img src="img1/1.png" class="db">
+		<img src="img1/2.png">
+		<img src="img1/3.png">
+		<img src="img1/4.png">
+		<img src="img1/5.png">
+	</section>
+	<section>
+		<div id="box1"></div>
+		<div id="box2"></div>
+	</section>
+	<section id="boxSpan">
+		<span class="back"></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<img src="img1/1x.png">
+		<img src="img1/2x.png">
+		<img src="img1/3x.png">
+		<img src="img1/4x.png">
+		<img src="img1/5x.png">
+	</section>
+</section>
+<script>
+	var imgs = document.getElementById("imgs");
+	var imgsImg = imgs.getElementsByTagName("img");
+	var boxSpan = document.getElementById("boxSpan");
+	var box1 = document.getElementById("box1");
+	var box2 = document.getElementById("box2");
+	var dot = boxSpan.getElementsByTagName("span");
+	var imgss = boxSpan.getElementsByTagName("img");
+	var i = 0;
+	//点击向上按钮，使图片向上一张
+	box1.onclick = function(){
+		//每一次比上一次的i少1
+		i--;
+		//当i小于0的时候
+		if(i < 0){
+			//i改为图片个数减掉一（下标从0开始）第5张
+			i = imgsImg.length - 1;
+		}
+		//清除所有的不需要
+		for(var n = 0;n < imgsImg.length; n++){
+			//清除小点的默认class名
+			dot[n].className = "";
+			//清除img的class名，使img隐藏
+			imgsImg[n].className = "";
+		}
+		//添加img的class名，使img显示
+		imgsImg[i].className = "db";
+		//添加小点的默认class名，使小点变色
+		dot[i].className = "back";
+	}
+	//点击向下按钮，使图片向下一张
+	box2.onclick = function(){
+		//每一次比上一次的i多1
+		i++;
+		//当i大于imgsImg.length - 1的时候
+		if(i > imgsImg.length - 1){
+			//i改为0（第一张）
+			i = 0;
+		}
+		//清除所有的不需要
+		for(var n = 0;n < imgsImg.length; n++){
+			//清除小点的默认class名
+			dot[n].className = "";
+			//清除img的class名，使img隐藏
+			imgsImg[n].className = "";
+		}
+		//添加img的class名，使img显示
+		imgsImg[i].className = "db";
+		//添加小点的默认class名，使小点变色
+		dot[i].className = "back";
+	}
+	//给每一个小点添加点击处理
+	for(var j = 0;j < imgsImg.length; j++){
+		//自定义一个属性，保存下标
+		dot[j].oo =j;
+		//小点点击时
+		dot[j].onclick = function(){
+			//清除每一个的默认
+			for(var k = 0;k < imgsImg.length; k++){
+				//清除小点的默认class名
+				dot[k].className = "";
+				//清除img的class名，使img隐藏
+				imgsImg[k].className = "";
+			}
+			//当前小点添加class名 （添加背景）
+			this.className = "back";
+			//用当前下标的img添加一个class名 使他显示
+			imgsImg[this.oo].className = "db";
+			//全局关联
+			i = this.oo;
+		}
+	}
+	//操控所有的小点
+	for(var b = 0;b < imgsImg.length; b++){
+		//自定义一个属性，保存下标
+		dot[b].ooo = b;
+		//当鼠标移入小点时
+		dot[b].onmouseover = function(){
+			//改变img的效果为显示
+			imgss[this.ooo].style.display = "block";
+		}
+		//当鼠标移出小点时
+		dot[b].onmouseout = function(){
+			//改变img的效果为隐藏
+			imgss[this.ooo].style.display = "";
+		}
+	}
+</script>
+</body>
+</html>

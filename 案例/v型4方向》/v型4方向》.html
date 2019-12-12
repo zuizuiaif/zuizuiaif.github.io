@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>v型4方向》</title>
+<style>
+	#box{
+		position: absolute;
+	}
+	#box div{
+		position: absolute;
+        left: 0px;
+        top:0px;
+        width: 100px;
+        height: 100px;
+        background: red;
+	}
+</style>
+</head>
+<body>
+	<input type="button" value="生成V" id="btn">
+	<section id="box">
+		<!-- <div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div> -->
+	</section>
+	<script>
+		var btn = document.getElementById("btn");
+        var box = document.getElementById("box");
+        var boxDiv = box.getElementsByTagName("div");
+        var num = 5;
+        var z = 0;
+        //点击按钮时
+        btn.onclick = function(){
+        	//内容清空
+        	var str = "";
+        	//判断
+        	if(z == 0){
+        		//重复生成
+        		for(var i = 0; i < num; i++){
+        			//i = 0 1 2
+        			if( i < 3 ){
+	                    str += "<div style='left:"+(i*100)+"px;top:"+(i*100)+"px;'>"+(i+1)+"</div>";
+	                //i = 3 4
+	                }else{
+	                    str += "<div style='left:"+(i*100)+"px;top:"+(4-i)*100+"px;'>"+(i+1)+"</div>";
+	                }
+	        	}
+	        	//box的内容
+	        	box.innerHTML = str;
+	        	z = 1;
+	        //再次判断
+        	}else if(z == 1){
+        		//重复生成
+        		for(var i = 0; i < num; i++){
+        			//i = 0 1 2
+        			if( i < 3 ){
+	                    str += "<div style='left:"+(i*100)+"px;top:"+(i*100)+"px;'>"+(i+1)+"</div>";
+	                //i = 3 4
+	                }else{
+	                    str += "<div style='left:"+(4-i)*100+"px;top:"+(i*100)+"px;'>"+(i+1)+"</div>";
+	                }
+	        	}
+	        	//box的内容
+	        	box.innerHTML = str;
+	        	z = 2;
+	        //再次判断
+        	}else if(z == 2){
+        		//重复生成
+        		for(var i = 0; i < num; i++){
+        			//i = 0 1 2
+        			if( i < 3 ){
+	                    str += "<div style='left:"+(i*100)+"px;top:"+(2 - i)*100+"px;'>"+(i+1)+"</div>";
+	                //i = 3 4
+	                }else{
+	                    str += "<div style='left:"+(i*100)+"px;top:"+(i - 2)*100+"px;'>"+(i+1)+"</div>";
+	                }
+	        	}
+	        	//box的内容
+	        	box.innerHTML = str;
+	        	z = 3;
+	        //再次判断
+        	}else if(z == 3){
+        		//重复生成
+        		for(var i = 0; i < num; i++){
+        			//i = 0 1 2
+        			if( i < 3 ){
+	                    str += "<div style='left:"+(2 - i)*100+"px;top:"+(i*100)+"px;'>"+(i+1)+"</div>";
+	                //i = 3 4
+	                }else{
+	                    str += "<div style='left:"+(i - 2)*100+"px;top:"+(i*100)+"px;'>"+(i+1)+"</div>";
+	                }
+	        	}
+	        	box.innerHTML = str;
+	        	z = 0;
+        	}
+        }
+	</script>
+</body>
+</html>

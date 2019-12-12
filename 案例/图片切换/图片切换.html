@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>图片切换</title>
+<style>
+	body{
+		width: 1000px;
+		margin: 0 auto;
+		border: 1px solid #000;
+		padding-bottom: 30px;
+	}
+	footer{
+		text-align: center;
+	}
+	div{
+		position: relative;
+	}
+	#section{
+		text-align: center;
+	}
+	#imgs{
+		display: block;
+		margin: 0 auto;
+	}
+	.transparentT{
+		position: absolute;
+		top: 0;
+		left: 240px;
+		height: 20px;
+		width: 520px;
+		background: #000;
+		opacity: .5;
+	}
+	.transparentB{
+		position: absolute;
+		bottom: 0px;
+		left: 240px;
+		height: 20px;
+		width: 520px;
+		background: #000;
+		opacity: .5;
+	}
+	#text1{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		color: #fff;
+	}
+	#text2{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		color: #fff;
+	}
+	#arrowsL{
+		position: absolute;
+		top: 120px;
+		left: 240px;
+		width: 40px;
+		height: 40px;
+		background: url(img/L.png);
+		cursor: pointer;
+	}
+	#arrowsR{
+		position: absolute;
+		top: 120px;
+		right: 240px;
+		width: 40px;
+		height: 40px;
+		background: url(img/R.png);
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+<footer>
+	<input type="button" value="循环播放" id="btn1">
+	<input type="button" value="顺序播放" id="btn2">
+</footer>
+<p id="section">图片可以从最后一张跳转到第一张</p>
+<div>
+	<img src="img/456fgf.jpg" id="imgs">
+	<span class="transparentT"></span>
+	<span class="transparentB"></span>
+	<span id="text1">1/5</span>
+	<span id="text2">茶叶</span>
+	<span id="arrowsL"></span>
+	<span id="arrowsR"></span>
+</div>
+<script>
+	var btn1 = document.getElementById("btn1");
+	var btn2 = document.getElementById("btn2");
+	var section = document.getElementById("section");
+	var imgs = document.getElementById("imgs");
+	var text1 = document.getElementById("text1");
+	var text2 = document.getElementById("text2");
+	var arrowsL = document.getElementById("arrowsL");
+	var arrowsR = document.getElementById("arrowsR");
+	var arr = ["456fgf.jpg","34435.jpg","sadsd.jpg","sdbg.jpg","sdfsdfcc.jpg"];
+	var arr2 = ["茶叶","玩具","吃货","衣服","家具"];
+	var n = 0;
+	var max = arr.length - 1;
+	var onOff = true;
+	text1.innerHTML = "1/"+arr.length;
+	//点击btn1时是真
+	btn1.onclick = function(){
+		section.innerHTML = "图片可以从最后一张跳转到第一张";
+		onOff = true;
+	}
+	//点击btn2时是假
+	btn2.onclick = function(){
+		section.innerHTML = "图片这能到第一张或者最后一张切换";
+		onOff = false;
+	}
+	//点击左边箭头时
+	arrowsR.onclick = function(){
+		//判断是否点击了btn1或者btn2		
+		n = n + 1;
+		if(n > max){
+			if (onOff) {
+				n = 0;
+			}else{
+				alert("最后一张了")
+				n=max;
+			}	
+		}
+		imgs.src = "img/"+arr[n];
+		text1.innerHTML = n+1+"/"+arr.length;
+		text2.innerHTML = arr2[n];
+	}
+	//点击右边边箭头时
+	arrowsL.onclick = function(){
+		//判断是否点击了btn1或者btn2
+		n = n -1;
+		if(n < 0){
+			if (onOff) {
+			n = max;
+			}else{
+				alert("第一张了");
+				n = 0;
+			}
+		}
+		imgs.src = "img/"+arr[n];
+		text1.innerHTML = n+1+"/"+arr.length;
+		text2.innerHTML = arr2[n];
+	}
+</script>
+</body>
+</html>

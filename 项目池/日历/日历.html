@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>win10日历</title>
+<style>
+	body{
+		color: #fff;
+		font-size: 20px;
+	}
+	img{
+		vertical-align: top;
+	}
+	#box{
+		position: relative;
+		width: 307px;
+		height: 497px;
+		background: #11266d;
+		margin: 20px auto 0;
+		padding-left: 25px;
+		border: 1px solid red;
+	}
+	#now{
+		color: #fff;
+		font-size: 30px;
+		padding-top: 30px;
+	}
+	#now span{
+		display: block;
+		color: #57a0ec;
+		font-size: 14px;
+		padding: 20px 0 30px;
+	}
+	#box2{
+		height: 5px;
+		padding-top: 30px;
+		position: relative;
+	}
+	#time{
+		position: absolute;
+		top: -2px;
+		left: 0;
+		color: #fff;
+		font-size: 18px;
+	}
+	#prevMonth,
+	#nextMonth{
+		position: absolute;
+		top: -10px;
+		left: 210px;
+	}
+	#nextMonth{
+		left: 250px;
+	}
+	table{
+		margin: 0 -15px;
+		width: 307px;
+		text-align: center;
+	}
+	tr{
+		height: 35px;
+	}
+	td{
+		display: inline-block;
+		width: 41px;
+		line-height: 35px;
+	}
+	#sz{
+		position: absolute;
+		top: 446px;
+		left: 25px;
+		line-height: 40px;
+		color: #488fe0;
+		font-size: 14px;
+		text-decoration: none;
+	}
+	.hove{
+		border:1px solid #297acc;
+		margin:-1px;
+	}
+	#tm{
+		width: 100%;
+		height: 100%;
+		opacity: .9;
+		background: #000;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		display: none;
+	}
+	#xg{
+		width: 680px;
+		height: 360px;
+		position: absolute;
+		top: 140px;
+		left: 50%;
+		margin-left: -340px;
+		background: #fff;
+		z-index: 3;
+		display: none;
+	}
+	.hh{
+		margin: 0;
+		color: #000;
+		font-size: 15px;
+		line-height: 30px;
+		padding-left: 10px;
+	}
+	.box{
+		background: #11266d;
+		height: 330px;
+		padding-left: 30px;
+	}
+	.box .hh{
+		margin: 0;
+		color: #fff;
+		font-size: 20px;
+		line-height: 65px;
+	}
+	.p1{
+		font-size: 14px;
+	}
+	#change,
+	#abolish{
+		width: 90px;
+		height: 30px;
+		border: 2px solid #fff;
+		background: #11266d;
+		color: #fff;
+		position: relative;
+		top: 80px;
+		left: 240px;
+	}
+	#change:hover,
+	#abolish:hover{
+		background: #74b8fc;
+	}
+	.qw{
+		font-size: 14px;
+		padding-left: 5px;
+	}
+	#boxs{
+		height: 238px;
+		overflow: hidden;
+		display: block;
+		position: relative;
+	}
+	#tbody{
+		display: block;
+		position: absolute;
+		top: -242px;
+		left: 0;
+	}
+	#tbodys{
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	#tbodyss{
+		display: block;
+		position: absolute;
+		top: 242px;
+		left: 0;
+	}
+</style>
+</head>
+<body>
+	<section id="tm"></section>
+	<section id="xg">
+		<h3 class="hh">更改时间和日期</h3>
+		<div class="box">
+			<h2 class="hh">更改时间和日期</h2>
+			<p class="p1">日期</p>
+			<select id="yearSt">
+			
+			</select><span class="qw">年</span>
+			<select  id="monthSt">
+				
+			</select><span class="qw">月</span>
+			<select id="dateSt">
+				
+			</select><span class="qw">日</span>
+			<p class="p1">时间</p>
+			<select id="hour">
+				
+			</select><span class="qw">时</span>
+			<select id="point">
+				
+			</select><span class="qw">分</span>
+			<select id="second">
+				
+			</select><span class="qw">秒</span>
+			<input type="button" value="更改" id="change">
+			<input type="button" value="取消" id="abolish">
+		</div>
+	</section>
+	<section id="box">
+		<div id="now">
+			XXX:XX:XX
+			<span>XXX年XXX月XXX日,星期XX</span>
+		</div>
+		<div id="box2">
+			<span id="time">XX年XX月</span>
+			<a href="javascript:;" id="prevMonth"><img src="img/1.png"></a>
+			<a href="javascript:;" id="nextMonth"><img src="img/2.png"></a>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<td>日</td>
+					<td>一</td>
+					<td>二</td>
+					<td>三</td>
+					<td>四</td>
+					<td>五</td>
+					<td>六</td>
+				</tr>
+			</thead>
+		</table>
+		<table id="boxs">
+			<tbody id="tbody">
+				
+			</tbody>
+			<tbody id="tbodys">
+				
+			</tbody>
+			<tbody id="tbodyss">
+				
+			</tbody>
+		</table>
+		<a href="javascript:;" id="sz">日期和时间设置</a>
+	</section>
+</body>
+<script src="tools.js"></script>
+<script src="MTween.js"></script>
+<script>
+	var yearSt = $("#yearSt");
+	var monthSt = $("#monthSt");
+	var dateSt = $("#dateSt");
+	var hour = $("#hour");
+	var point = $("#point");
+	var second = $("#second");
+	var tm = $("#tm");
+	var xg = $("#xg");
+	var change = $("#change");
+	var abolish = $("#abolish");
+	var now = $("#now");
+	var tbody = $("#tbody");
+	var tbodys = $("#tbodys");
+	var tbodyss = $("#tbodyss");
+	var prevMonth = $("#prevMonth");
+	var nextMonth = $("#nextMonth");
+	var sz = $("#sz");
+	var time = $("#time");
+	function formatWeek(v){
+		return ["日","一","二","三","四","五","六"][v];
+	}
+	function addZero(n){
+		return n < 10 ? "0"+n : n;	
+	}
+	function init(){
+		var d = new Date();
+		var n = d.getFullYear();
+		var y = d.getMonth()+1;
+		var r = d.getDate();
+		var s = d.getHours();
+		var f = d.getMinutes();
+		var m = d.getSeconds();
+		var x = d.getDay();
+		now.innerHTML = addZero(s)+':'+addZero(f)+':'+addZero(m)+'<span>'+addZero(n)+'年'+addZero(y)+'月'+addZero(r)+'日'+',星期'+formatWeek(x)+'</span>';
+	}
+	init();
+	var timerx = setInterval(init,1000)
+	function getDays(year,month){
+		var d = new Date(year,month,1).getTime();	
+		return new Date(d-1).getDate();
+	}
+	function riliHtml(year,month,De){
+		var day = getDays(year,month);
+        var lastMonth = getDays(year,month);
+		var d = new Date();
+		var totalDate = getDays(year,month+1);
+		var d2 = new Date(year,month,1);
+		var week = d2.getDay();
+		var html = '';
+		var t = -week;
+		var q = 0;
+		for( var i = 0; i < 6; i++ ){
+			html += "<tr>";
+			for( var j = 0; j < 7; j++ ){
+				t++;
+				if( t < 1){
+					html += '<td style="color:#5377a3;">'+(lastMonth+t)+'</td>';
+				}else if(t > totalDate){
+					q++
+					html += '<td style="color:#5377a3;">'+q+'</td>'
+				}else{
+					if(t == De){
+						html += "<td style='background: #297acc;border:1px solid #297acc;margin:0;'>"+"<div style='border:2px solid #000;'>"+t+"</div>"+"</td>";
+					}else{
+					html += '<td>'+t+'</td>';
+					}
+				}
+			}
+			html += "</tr>";
+		}
+		return html;
+	}
+	var hove = $("td",tbodys)
+	function hover(sa){
+		for (var i = 0; i < 42 ; i++){
+			sa[i].onmouseover = function(){
+				this.className = "hove";
+			}
+			sa[i].onmouseout = function(){
+				this.className = "";
+			}
+		}
+	}
+	setInterval(function(){
+		hover(hove);
+	},16)
+	function createOptionsHtml(start,end,select){
+		var yearOption = '';
+		for( var i = start; i >= end; i-- ){
+			if( i === select ){
+				yearOption += '<option selected>'+i+'</option>';
+			}else{
+				yearOption += '<option>'+i+'</option>'
+			}
+		}
+		return yearOption;
+	}
+	var d = new Date();
+	var M = d.getMonth();
+	var q = d.getFullYear();
+	var date = d.getDate();
+	var currentMonth = d.getMonth();
+	var currentYear = d.getFullYear();
+	tbody.innerHTML = riliHtml(d.getFullYear(),M,date);
+	tbodys.innerHTML = riliHtml(d.getFullYear(),M,date);
+	tbodyss.innerHTML = riliHtml(d.getFullYear(),M,date);
+	time.innerHTML = d.getFullYear() + '年'+(M+1)+'月';
+	var onOfff = true;
+	prevMonth.onclick = function (){
+		if(tbodys.timer){
+			return;
+		}
+		if(timerr){
+			clearInterval(timerr);
+			var s = hour.value;
+			var f = point.value;
+			var m = second.value;
+			var n = yearSt.value;
+			var y = monthSt.value;
+			var r = dateSt.value;
+			if(onOfff){
+				q = n
+				M = addZero(y-1);
+				onOfff = false;
+			}
+			timerr = setInterval(function(){
+				m++;
+				if(m === 60){
+					m = 0;
+					f++;
+					if(f === 60){
+						f = 0;
+						s++;
+						if(s === 24){
+							s = 0;
+							r++;
+						}
+					}
+				}
+				now.innerHTML = addZero(s)+':'+addZero(f)+':'+addZero(m)+'<span>'+addZero(n)+'年'+addZero(y)+'月'+addZero(r)+'日'+',星期'+formatWeek(x)+'</span>';
+			},1000);
+		}
+		M--;
+		if( M < 0){
+			M = 11;
+			q--;
+		}
+		var ddd;
+		if(M+1 == y && q == n && kg){
+			ddd = r;
+		}else if( M === currentMonth && q === currentYear && !kg){
+			ddd = date;
+		}
+		tbody.innerHTML = riliHtml(q,M,ddd);
+		MTween(tbody,"top",500,0,"linear",function(){
+			tbody.style.top = -242+"px";
+		})
+		MTween(tbodys,"top",500,242,"linear",function(){
+			tbodys.style.top = 0;
+			tbodys.innerHTML = riliHtml(q,M,ddd);
+		})
+		time.innerHTML = q + '年'+(M+1)+'月';
+	};
+	nextMonth.onclick = function (){
+		if(tbodys.timer){
+			return;
+		}
+		if(timerr){
+			clearInterval(timerr);
+			var s = hour.value;
+			var f = point.value;
+			var m = second.value;
+			var n = yearSt.value;
+			var y = monthSt.value;
+			var r = dateSt.value;
+			if(onOfff){
+				M = addZero(y-1);
+				q = n;
+				onOfff = false;
+			}
+			timerr = setInterval(function(){
+				m++;
+				if(m === 60){
+					m = 0;
+					f++;
+					if(f === 60){
+						f = 0;
+						s++;
+						if(s === 24){
+							s = 0;
+							r++;
+						}
+					}
+				}
+				now.innerHTML = addZero(s)+':'+addZero(f)+':'+addZero(m)+'<span>'+addZero(n)+'年'+addZero(y)+'月'+addZero(r)+'日'+',星期'+formatWeek(x)+'</span>';
+			},1000);
+		}
+		
+		M++;
+		if( M > 11){
+			M = 0;
+			q++;
+		}
+		var ddd;
+		if(M+1 == y && q == n && kg){
+			ddd = r;
+		}else if( M === currentMonth && q === currentYear && !kg){
+			ddd = date;
+		}
+		tbodyss.innerHTML = riliHtml(q,M,ddd);
+		MTween(tbodys,"top",500,-242,"linear",function(){
+			tbodys.style.top = 0;
+			tbodys.innerHTML = riliHtml(q,M,ddd);
+		})
+		MTween(tbodyss,"top",500,0,"linear",function(){
+			tbodyss.style.top = 242+"px";
+		})
+		time.innerHTML = q + '年'+(M+1)+'月';
+	};
+	var kg1 = true;
+	var kg2 = true;
+	var kg3 = false;
+	function cf(){
+		var Y = d.getFullYear();
+		var M = d.getMonth()+1;
+		var De = d.getDate();
+		yearSt.innerHTML = createOptionsHtml(2020,1970,Y);
+		monthSt.innerHTML = createOptionsHtml(12,1,M);
+		var yy = getDays(Y,M)
+		dateSt.innerHTML = createOptionsHtml(yy,1,De);
+
+	}
+	cf();
+	function vf(){
+		var S = d.getHours();
+		var F = d.getMinutes();
+		hour.innerHTML = createOptionsHtml(23,0,S);
+		point.innerHTML = createOptionsHtml(59,0,F);
+		second.innerHTML = createOptionsHtml(59,0,M);
+	}
+	vf();
+	sz.onclick = function(){
+		tm.style.display = "block";
+		xg.style.display = "block";
+	}
+	var x = d.getDay();
+	var yf;
+	var xf;
+	yearSt.onchange = function (){
+		d.setFullYear(this.value);
+		x = d.getDay();
+		yf = yearSt.value
+		var De = d.getDate();
+		kg1 = false;
+		if(kg2){
+			xf = d.getMonth()
+		}
+		var yy = getDays(yf,xf)
+		dateSt.innerHTML = createOptionsHtml(yy,1,De);
+	};
+	monthSt.onchange = function (){
+		d.setMonth(this.value);
+		x = d.getDay();
+		xf = monthSt.value
+		var De = d.getDate();
+		kg2 = false;
+		if(kg1){
+			yf = d.getFullYear()
+		}
+		var yy = getDays(yf,xf)
+		dateSt.innerHTML = createOptionsHtml(yy,1,De);
+	};
+	dateSt.onchange = function (){
+		d.setDate(this.value);
+		x = d.getDay();
+		kg3 = true;
+	}
+	hour.onchange = function (){
+		d.getHours(this.value);
+		x = d.getDay();
+	}
+	point.onchange = function (){
+		d.getMinutes(this.value);
+		x = d.getDay();
+	}
+	second.onchange = function (){
+		d.getSeconds(this.value);
+		x = d.getDay();
+	}
+	var timerr;
+	var kg = false;
+	change.onclick = function(){
+		clearInterval(timerx);
+		var s = hour.value;
+		var f = point.value;
+		var m = second.value;
+		var n = yearSt.value;
+		var y = monthSt.value;
+		var r = dateSt.value;
+		clearInterval(timerr);
+		timerr = setInterval(function(){
+			m++;
+			if(m === 60){
+				m = 0;
+				f++;
+				if(f === 60){
+					f = 0;
+					s++;
+					if(s === 24){
+						s = 0;
+						r++;
+					}
+				}
+			}
+			now.innerHTML = addZero(s)+':'+addZero(f)+':'+addZero(m)+'<span>'+addZero(n)+'年'+addZero(y)+'月'+addZero(r)+'日'+',星期'+formatWeek(x)+'</span>';
+			time.innerHTML = addZero(n)+'年'+y+'月';
+		},1000);
+		tbodys.innerHTML = riliHtml(n,y-1,r);
+		tbodyss.innerHTML = riliHtml(n,y-1,r);
+		tm.style.display = "none";
+		xg.style.display = "none";
+		onOfff = true;
+		kg = true;
+	}
+	abolish.onclick = function(){
+		tm.style.display = "none";
+		xg.style.display = "none";
+	}
+</script>
+</html>

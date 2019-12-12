@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>多选</title>
+<style>
+	div{
+		width: 50px;
+		height: 50px;
+		border: 1px solid #000;
+		float: left;
+	}
+	.background{
+		background: red;
+	}
+</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+<script>
+	var boxDiv =  document.getElementsByTagName("div");
+	for(var i = 0; i < boxDiv.length; i++){
+		boxDiv[i].a = true;
+		boxDiv[i].onclick = function(){
+			if (this.a) {
+				this.className = "background";
+				this.a = false;
+			}else{
+				this.className = "";
+				this.a = true;
+			}
+		}
+	}
+</script>
+</body>
+</html>

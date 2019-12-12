@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>淘宝评分</title>
+<style>
+	body{
+		margin: 50px;
+	}
+	ul{
+		padding: 0;
+		margin: 0;
+	}
+	li{
+		list-style: none;
+	}
+	h1{
+		padding-top: 10px;
+		font-size: 22px;
+		margin: 0;
+		float: left;
+	}
+	#box1{
+		padding-top: 10px;
+		float: left;
+	}
+	#box2{
+		float: left;
+	}
+</style>
+</head>
+<body>
+	<h1>*总体评分:</h1>
+	<div id="box1">
+		<img src="img2/1.png"/>
+        <img src="img2/1.png"/>
+        <img src="img2/1.png"/>
+        <img src="img2/1.png"/>
+        <img src="img2/1.png"/>
+	</div>
+	<div id="box2">
+		<img src="img2/box.png">
+	</div>
+	<script>
+		var box1 = document.getElementById("box1");
+		var imgs1 = box1.getElementsByTagName("img");
+		var box2 = document.getElementById("box2");
+		var arrSpan = ['很差!','较差!','还行!','推荐!','力荐!'];
+		var indexNow = -1;
+		function fn_1(){
+			for(var i = 0;i < imgs1.length; i++){
+				imgs1[i].src ="img2/1.png";
+				box2.innerHTML = '<img src="img2/box.png">';
+			}
+		}
+		for(var j = 0;j < imgs1.length; j++){
+			imgs1[j].index = j;
+			imgs1[j].onclick = function(){
+				indexNow = this.index;
+			}
+			imgs1[j].onmouseover = function(){
+				fn_1();
+				for(var j = 0;j < this.index + 1;j++){
+					if(this.index < 2){
+						imgs1[j].src ="img2/2.png";
+					}else{
+						imgs1[j].src ="img2/3.png";
+					}
+				}
+			}
+			imgs1[j].onmouseout = function(){
+				fn_1();
+				for(var j = 0;j < indexNow + 1;j++){
+					if(indexNow < 2){
+						imgs1[j].src ="img2/2.png";
+					}else{
+						imgs1[j].src ="img2/3.png";
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>

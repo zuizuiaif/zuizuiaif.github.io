@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>100个div覆盖图</title>
+<style>
+	#box{
+		width: 500px;
+		height: 500px;
+		position: relative;
+	} 
+	#box div{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 50px;
+		height: 50px;
+		background: #ccc;
+	}
+</style>
+</head>
+<body>
+	<input type="button" value="生成" id="btn">
+	<section id="box">
+		<!-- <div>1</div> 
+		<div>2</div> -->
+	</section>
+	<script>
+		var btn = document.getElementById("btn");
+		var box = document.getElementById("box");
+		var boxDiv = document.getElementsByTagName("div");
+		//点击按钮的时候生成100个div
+		btn.onclick = function(){
+			//插入背景图片
+			box.style.background = "url(img/ab.png)";
+			var z = "";
+			//循环生成
+			for(var i = 0; i < 100; i++){
+				//余数
+				var l = i % 10;
+				//取值的上一个整数
+				var t = Math.floor(i /10);
+				//添加样式
+				z += '<div style="left:'+(l*50)+'px;top:'+(t*50)+'px"></div>';
+			}
+			box.innerHTML = z;
+			//循环添加
+			for(var i = 0; i < 100; i++){
+				//移入
+				boxDiv[i].onmouseover = function(){
+					this.style.opacity =  0;
+				}
+			}
+				
+		}
+	</script>
+</body>
+</html>
