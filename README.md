@@ -1,1 +1,1 @@
-# 个人简历主页 https://zuizuiaif.github.io/resume.html
+# 个人简历主页 https://zuizuiaif.github.io/index.html
