@@ -274,8 +274,8 @@
 <h4 id="02旁站信息收集"><a href="#02旁站信息收集" class="headerlink" title="02旁站信息收集"></a>02旁站信息收集</h4><p>旁站是与攻击目标在同一服务器上的不同网站，在攻击目标没有漏洞的情况下，可以通过查找旁站的漏洞攻击旁站，然后再通过提权拿到服务器的最高权限，拿到服务器的最高权限后攻击目标也就拿下了</p>
 <p>获取旁站一般有这几个方式：</p>
 <p>1、通过站长工具进行同IP的查询  <a target="_blank" rel="noopener" href="https://stool.chinaz.com/same">https://stool.chinaz.com/same</a></p>
-<p>2、通过bing搜索引擎查询  <a target="_blank" rel="noopener" href="https://cn.bing.com/search?q=ip:220.181.38.150">https://cn.bing.com/search?q=ip:220.181.38.150</a></p>
-<p>3、通过网络空间探测引擎搜索  <a target="_blank" rel="noopener" href="https://fofa.info/">https://fofa.info/</a>  搜索 ip&#x3D;”220.181.38.150”</p>
+<p>2、通过bing搜索引擎查询  <a target="_blank" rel="noopener" href="https://cn.bing.com/search?q=ip:x.x.x.x">https://cn.bing.com/search?q=ip:x.x.x.x</a></p>
+<p>3、通过网络空间探测引擎搜索  <a target="_blank" rel="noopener" href="https://fofa.info/">https://fofa.info/</a>  搜索 ip&#x3D;”x.x.x.x”</p>
 <h4 id="03C段主机信息收集"><a href="#03C段主机信息收集" class="headerlink" title="03C段主机信息收集"></a>03C段主机信息收集</h4><p>C段查询主要是当前的IP攻击不下来的时候，可以攻击他的C段，比如IP是220.181.34.34是我们的目标，但是攻击不下来，可以去扫描220,181.34.0-255Z这个网段，看看能不能攻击下来</p>
 <p>获取C段一般有这几种主要方式：</p>
 <p>1、nmap扫描C段主机  nmap -sn x.x.x.0&#x2F;24</p>
@@ -294,7 +294,7 @@
 <p>5、聚合工具。聚合工具就是，结合和爆破，证书，搜索引擎，DNS解析记录等多个方式去探测子域名比 </p>
 <p>如：oneforall   使用 python oneforall.py –target baidu.com run</p>
 <h4 id="05端口信息收集"><a href="#05端口信息收集" class="headerlink" title="05端口信息收集"></a>05端口信息收集</h4><p>“端口”是英文port的意译，可以认为是设备与外界通讯交流的出口，不同的端口对应不同的服务，计算机的端口是0-65535个，当80 443 等端口攻击不下来的时候通过端口测试，扫描其他端口，从而渗透成功</p>
-<p>1、使用nmap扫描端口 nmap -sV -p 1-65535 IP</p>
+<p>1、使用nmap扫描端口 nmap -sV -p 1-65535 x.x.x.x</p>
 <p>2、使用端口扫描的工具</p>
 <h3 id="这里提供四个软件"><a href="#这里提供四个软件" class="headerlink" title="这里提供四个软件"></a>这里提供四个软件</h3><p>1、C段扫描器  <a href="/%E8%BD%AF%E4%BB%B6/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/webfinder.zip">webfinder</a></p>
 <p>2、子域名挖掘机 <a href="/%E8%BD%AF%E4%BB%B6/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/Layer%E5%AD%90%E5%9F%9F%E5%90%8D%E6%8C%96%E6%8E%98%E6%9C%BA.zip">Layer</a></p>
@@ -477,9 +477,9 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 11.003760059752729px;" class="tag-cloud-link">博客搭建</a>
+    <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 11.345981282961993px;" class="tag-cloud-link">博客搭建</a>
     
-    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15.889654355822056px;" class="tag-cloud-link">网络安全</a>
+    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 17.23682624947084px;" class="tag-cloud-link">网络安全</a>
     
 </div>
                 
